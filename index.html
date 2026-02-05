@@ -1,34 +1,46 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amaru Resorts | Collaboration Partenaires</title>
+    <title>Amaru Resorts | Partner Program</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Montserrat', sans-serif; background-color: #FAF9F6; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #FAF9F6; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=2000'); background-size: cover; background-position: center; }
+        .hero-gradient { 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+            url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=2000'); 
+            background-size: cover; background-position: center; 
+        }
+        [data-lang]:hidden { display: none; }
     </style>
 </head>
-<body class="text-gray-800 italic-style">
+<body class="text-gray-800">
 
-    <nav class="flex justify-between items-center px-8 py-6 absolute w-full z-10 text-white">
-        <div class="text-2xl font-bold tracking-widest uppercase">Amaru Resorts</div>
-        <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest">
-            <a href="#" class="hover:opacity-70 transition">Expertise</a>
-            <a href="#" class="hover:opacity-70 transition">Portfolio</a>
-            <a href="#contact" class="border border-white px-6 py-2 hover:bg-white hover:text-black transition">Devenir Partenaire</a>
+    <nav class="flex justify-between items-center px-6 md:px-12 py-6 absolute w-full z-20 text-white">
+        <div class="text-xl md:text-2xl font-bold tracking-widest uppercase">Amaru Resorts</div>
+        
+        <div class="flex items-center space-x-4 md:space-x-8">
+            <select onchange="changeLanguage(this.value)" class="bg-transparent border border-white/30 text-white text-xs uppercase tracking-widest px-2 py-1 focus:outline-none cursor-pointer hover:bg-white hover:text-black transition">
+                <option value="fr" class="text-black">FR</option>
+                <option value="en" class="text-black">EN</option>
+                <option value="nl" class="text-black">NL</option>
+                <option value="es" class="text-black">ES</option>
+            </select>
+            <a href="#contact" class="hidden md:block border border-white px-6 py-2 text-xs uppercase tracking-widest hover:bg-white hover:text-black transition">
+                <span data-i18n="nav_contact">Contact</span>
+            </a>
         </div>
     </nav>
 
     <section class="h-screen flex items-center justify-center text-center text-white hero-gradient px-4">
         <div class="max-w-4xl">
-            <span class="uppercase tracking-[0.3em] text-sm mb-4 block">Programme Partenaires Exclusif</span>
-            <h1 class="text-5xl md:text-7xl mb-6">L'excellence immobilière sur la Costa del Sol.</h1>
-            <p class="text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
-                Offrez à vos clients un accès privilégié aux propriétés les plus prestigieuses de Marbella à Sotogrande.
+            <span class="uppercase tracking-[0.3em] text-xs md:text-sm mb-4 block" data-i18n="hero_sub">Exclusive Partner Program</span>
+            <h1 class="text-5xl md:text-8xl mb-6" data-i18n="hero_title">L'excellence à la Costa del Sol.</h1>
+            <p class="text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed opacity-90" data-i18n="hero_desc">
+                Un partenariat de prestige pour vos clients les plus exigeants.
             </p>
         </div>
     </section>
@@ -36,70 +48,103 @@
     <section class="py-24 px-8 max-w-7xl mx-auto">
         <div class="grid md:grid-cols-3 gap-16">
             <div class="space-y-4">
-                <span class="text-xs uppercase tracking-widest text-gold-600 font-bold">Confiance</span>
-                <h3 class="text-2xl italic">Protection Totale</h3>
-                <p class="text-gray-500 font-light leading-relaxed">Vos clients restent les vôtres. Nous garantissons contractuellement la protection de vos referrals sans aucun contournement.</p>
+                <span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">01.</span>
+                <h3 class="text-2xl italic" data-i18n="feat1_title">Protection Totale</h3>
+                <p class="text-gray-500 font-light leading-relaxed" data-i18n="feat1_desc">Nous garantissons contractuellement la protection de vos referrals.</p>
             </div>
             <div class="space-y-4">
-                <span class="text-xs uppercase tracking-widest text-gold-600 font-bold">Rémunération</span>
-                <h3 class="text-2xl italic">Partage 50% à 70%</h3>
-                <p class="text-gray-500 font-light leading-relaxed">Une structure de commission transparente et parmi les plus attractives du marché haut de gamme espagnol.</p>
+                <span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">02.</span>
+                <h3 class="text-2xl italic" data-i18n="feat2_title">Rémunération</h3>
+                <p class="text-gray-500 font-light leading-relaxed" data-i18n="feat2_desc">Partage de commission de 50% à 70% sur notre part nette.</p>
             </div>
             <div class="space-y-4">
-                <span class="text-xs uppercase tracking-widest text-gold-600 font-bold">Expertise</span>
-                <h3 class="text-2xl italic">Service Multilingue</h3>
-                <p class="text-gray-500 font-light leading-relaxed">Accompagnement complet en Français, Anglais et Néerlandais pour une fluidité absolue.</p>
+                <span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">03.</span>
+                <h3 class="text-2xl italic" data-i18n="feat3_title">Multilingue</h3>
+                <p class="text-gray-500 font-light leading-relaxed" data-i18n="feat3_desc">Support complet en Français, Anglais, Néerlandais et Espagnol.</p>
             </div>
         </div>
     </section>
 
-    <section class="bg-white py-20">
-        <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
-            <div class="order-2 md:order-1">
-                <h2 class="text-4xl mb-8 leading-tight">Une exécution locale<br>de haute précision.</h2>
-                <ul class="space-y-6 text-gray-600">
-                    <li class="flex items-start"><span class="mr-4 text-black">—</span> Vidéos immersives et visites à distance pour vos clients.</li>
-                    <li class="flex items-start"><span class="mr-4 text-black">—</span> Accès aux opportunités "Off-Market" et avant-premières.</li>
-                    <li class="flex items-start"><span class="mr-4 text-black">—</span> Négociation stratégique sur le terrain.</li>
-                    <li class="flex items-start"><span class="mr-4 text-black">—</span> Disponibilité soirs et week-ends (réponse < 12h).</li>
-                </ul>
-            </div>
-            <div class="order-1 md:order-2">
-                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1000" alt="Luxe Villa" class="shadow-2xl grayscale-[20%] hover:grayscale-0 transition duration-700">
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 bg-[#1a1a1a] text-white px-8">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-4xl mb-4">Initialisons la collaboration</h2>
-            <p class="text-gray-400 mb-12 font-light">Laissez-nous vos coordonnées, Estelle ou moi-même vous recontacterons sous 24h.</p>
-            
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                <div>
-                    <label class="text-[10px] uppercase tracking-widest mb-2 block text-gray-500">Nom Complet</label>
-                    <input type="text" class="w-full bg-transparent border-b border-gray-700 py-3 focus:outline-none focus:border-white transition">
-                </div>
-                <div>
-                    <label class="text-[10px] uppercase tracking-widest mb-2 block text-gray-500">Agence / Société</label>
-                    <input type="text" class="w-full bg-transparent border-b border-gray-700 py-3 focus:outline-none focus:border-white transition">
-                </div>
-                <div class="md:col-span-2">
-                    <label class="text-[10px] uppercase tracking-widest mb-2 block text-gray-500">Email Professionnel</label>
-                    <input type="email" class="w-full bg-transparent border-b border-gray-700 py-3 focus:outline-none focus:border-white transition">
-                </div>
-                <div class="md:col-span-2 mt-8">
-                    <button class="w-full bg-white text-black py-4 uppercase text-xs tracking-[0.2em] font-bold hover:bg-gray-200 transition">
-                        Demander un accès partenaire
-                    </button>
-                </div>
+    <section id="contact" class="py-24 bg-[#111] text-white px-8">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-4xl mb-12 text-center" data-i18n="contact_title">Devenir Partenaire</h2>
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <input type="text" placeholder="Nom / Name" class="bg-transparent border-b border-gray-700 py-3 focus:outline-none focus:border-white transition">
+                <input type="text" placeholder="Agence / Agency" class="bg-transparent border-b border-gray-700 py-3 focus:outline-none focus:border-white transition">
+                <button class="md:col-span-2 bg-white text-black py-4 uppercase text-xs tracking-widest font-bold hover:bg-gray-200 transition" data-i18n="contact_btn">
+                    Envoyer la demande
+                </button>
             </form>
         </div>
     </section>
 
-    <footer class="py-12 text-center text-[10px] uppercase tracking-[0.2em] text-gray-400 bg-[#141414]">
-        &copy; 2024 Amaru Resorts — Marbella & Costa del Sol
-    </footer>
+    <script>
+        const translations = {
+            fr: {
+                nav_contact: "Contact",
+                hero_sub: "Programme Partenaires Exclusif",
+                hero_title: "L'excellence à la Costa del Sol.",
+                hero_desc: "Un partenariat de prestige pour vos clients les plus exigeants.",
+                feat1_title: "Protection Totale",
+                feat1_desc: "Nous garantissons contractuellement la protection de vos referrals.",
+                feat2_title: "Rémunération",
+                feat2_desc: "Partage de commission de 50% à 70% sur notre part nette.",
+                feat3_title: "Multilingue",
+                feat3_desc: "Support complet en Français, Anglais, Néerlandais et Espagnol.",
+                contact_title: "Devenir Partenaire",
+                contact_btn: "Envoyer la demande"
+            },
+            en: {
+                nav_contact: "Contact",
+                hero_sub: "Exclusive Partner Program",
+                hero_title: "Excellence on the Costa del Sol.",
+                hero_desc: "A prestige partnership for your most demanding clients.",
+                feat1_title: "Total Protection",
+                feat1_desc: "We contractually guarantee the protection of your referrals.",
+                feat2_title: "Commission",
+                feat2_desc: "50% to 70% commission split on our net share.",
+                feat3_title: "Multilingual",
+                feat3_desc: "Full support in French, English, Dutch, and Spanish.",
+                contact_title: "Become a Partner",
+                contact_btn: "Send Request"
+            },
+            nl: {
+                nav_contact: "Contact",
+                hero_sub: "Exclusief Partnerprogramma",
+                hero_title: "Excellentie aan de Costa del Sol.",
+                hero_desc: "Een prestigieus partnerschap voor uw meest veeleisende klanten.",
+                feat1_title: "Totale Bescherming",
+                feat1_desc: "Wij garanderen contractueel de bescherming van uw referrals.",
+                feat2_title: "Commissie",
+                feat2_desc: "50% tot 70% commissie op ons netto aandeel.",
+                feat3_title: "Meertalig",
+                feat3_desc: "Volledige ondersteuning in het Frans, Engels, Nederlands en Spaans.",
+                contact_title: "Partner Worden",
+                contact_btn: "Aanvraag Verzenden"
+            },
+            es: {
+                nav_contact: "Contacto",
+                hero_sub: "Programa Exclusivo de Socios",
+                hero_title: "Excelencia en la Costa del Sol.",
+                hero_desc: "Una alianza de prestigio para sus clientes más exigentes.",
+                feat1_title: "Protección Total",
+                feat1_desc: "Garantizamos contractualmente la protección de sus referidos.",
+                feat2_title: "Comisión",
+                feat2_desc: "Reparto de comisión del 50% al 70% de nuestra parte neta.",
+                feat3_title: "Multilingüe",
+                feat3_desc: "Soporte completo en francés, inglés, holandés y español.",
+                contact_title: "Ser Socio",
+                contact_btn: "Enviar Solicitud"
+            }
+        };
 
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                el.textContent = translations[lang][key];
+            });
+            document.documentElement.lang = lang;
+        }
+    </script>
 </body>
 </html>
