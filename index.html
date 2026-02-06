@@ -14,20 +14,19 @@
             url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=2000'); 
             background-size: cover; background-position: center; 
         }
-        select option { background-color: #111; color: white; }
+        .benefit-card { border-bottom: 1px solid #e5e7eb; padding-bottom: 2rem; }
     </style>
 </head>
 <body class="text-gray-800">
 
     <nav class="flex justify-between items-center px-6 md:px-12 py-6 absolute w-full z-20 text-white font-light">
         <div class="text-xl md:text-2xl font-bold tracking-[0.2em] uppercase">Amaru Resorts</div>
-        
         <div class="flex items-center space-x-4 md:space-x-8">
             <select onchange="changeLanguage(this.value)" class="bg-transparent border border-white/30 text-white text-[10px] uppercase tracking-widest px-2 py-1 focus:outline-none cursor-pointer hover:bg-white hover:text-black transition">
-                <option value="en">EN</option>
-                <option value="fr">FR</option>
-                <option value="nl">NL</option>
-                <option value="es">ES</option>
+                <option value="en" class="bg-black">EN</option>
+                <option value="fr" class="bg-black">FR</option>
+                <option value="nl" class="bg-black">NL</option>
+                <option value="es" class="bg-black">ES</option>
             </select>
             <a href="#contact" class="hidden md:block border border-white px-6 py-2 text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition">
                 <span data-i18n="nav_contact">Become a Partner</span>
@@ -38,10 +37,35 @@
     <section class="h-screen flex items-center justify-center text-center text-white hero-gradient px-4">
         <div class="max-w-4xl">
             <span class="uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4 block" data-i18n="hero_sub">International Collaboration Program</span>
-            <h1 class="text-5xl md:text-8xl mb-6 font-light" data-i18n="hero_title">Elevating Costa Blanca Real Estate.</h1>
+            <h1 class="text-5xl md:text-8xl mb-6 font-light" data-i18n="hero_title">Costa Blanca Real Estate.</h1>
             <p class="text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed opacity-80" data-i18n="hero_desc">
                 A high-touch partnership designed for elite international agents and their clients.
             </p>
+        </div>
+    </section>
+
+    <section class="py-24 px-8 max-w-6xl mx-auto">
+        <div class="text-center mb-20">
+            <h2 class="text-4xl font-light mb-4" data-i18n="benefits_title">Partner Benefits</h2>
+            <p class="text-gray-400 uppercase tracking-widest text-xs" data-i18n="benefits_sub">Why collaborate with Amaru Resorts</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-x-16 gap-y-12">
+            <div class="benefit-card">
+                <h3 class="text-xl italic mb-3" data-i18n="b1_t">Protected Referrals</h3>
+                <p class="text-gray-500 font-light text-sm leading-relaxed" data-i18n="b1_d">We never bypass you. Your relationship with your client is our priority and is contractually protected.</p>
+            </div>
+            <div class="benefit-card">
+                <h3 class="text-xl italic mb-3" data-i18n="b2_t">Generous Commissions</h3>
+                <p class="text-gray-500 font-light text-sm leading-relaxed" data-i18n="b2_d">Receive 50% to 70% of our side of the commission, confirmed transparently per deal.</p>
+            </div>
+            <div class="benefit-card">
+                <h3 class="text-xl italic mb-3" data-i18n="b3_t">Exclusive Access</h3>
+                <p class="text-gray-500 font-light text-sm leading-relaxed" data-i18n="b3_d">Curated upscale and off-plan opportunities in Malaga, Marbella, and Sotogrande (partner-only access).</p>
+            </div>
+            <div class="benefit-card">
+                <h3 class="text-xl italic mb-3" data-i18n="b4_t">High-Touch Execution</h3>
+                <p class="text-gray-500 font-light text-sm leading-relaxed" data-i18n="b4_d">Video tours, same-day replies, and we can join your client meetings to keep you in full control.</p>
+            </div>
         </div>
     </section>
 
@@ -53,60 +77,41 @@
             </div>
             
             <form action="https://formspree.io/f/maqdwkea" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-                
                 <div class="flex flex-col">
                     <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2" data-i18n="label_fname">Referrer First Name</label>
                     <input type="text" name="first_name" required class="bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-white transition font-light">
                 </div>
-
                 <div class="flex flex-col">
                     <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2" data-i18n="label_lname">Referrer Last Name</label>
                     <input type="text" name="last_name" required class="bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-white transition font-light">
                 </div>
-
                 <div class="flex flex-col">
                     <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2" data-i18n="label_company">Company</label>
                     <input type="text" name="company" required class="bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-white transition font-light">
                 </div>
-
                 <div class="flex flex-col">
                     <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2" data-i18n="label_country">Country of Residence</label>
                     <input type="text" name="country" required class="bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-white transition font-light">
                 </div>
-
                 <div class="flex flex-col md:col-span-2">
                     <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">E-mail</label>
                     <input type="email" name="email" required class="bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-white transition font-light">
                 </div>
-
                 <div class="flex flex-col md:col-span-2">
                     <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">Telephone</label>
                     <div class="flex gap-4">
-                        <select name="country_code" class="bg-transparent border-b border-gray-800 py-3 text-white focus:outline-none focus:border-white transition w-24 text-sm font-light">
-                            <option value="+34">ES +34</option>
-                            <option value="+33">FR +33</option>
-                            <option value="+32">BE +32</option>
-                            <option value="+31">NL +31</option>
-                            <option value="+44">GB +44</option>
-                            <option value="+1">US +1</option>
-                            <option value="+41">CH +41</option>
-                            <option value="+49">DE +49</option>
-                            <option value="+971">AE +971</option>
-                            <option value="+352">LU +352</option>
-                            </select>
+                        <select name="country_code" class="bg-transparent border-b border-gray-800 py-3 text-white focus:outline-none w-24 text-sm font-light">
+                            <option value="+34">ES +34</option><option value="+33">FR +33</option><option value="+32">BE +32</option><option value="+31">NL +31</option><option value="+44">GB +44</option><option value="+1">US +1</option>
+                        </select>
                         <input type="tel" name="phone" required placeholder="Phone number" class="flex-1 bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-white transition font-light">
                     </div>
                 </div>
-
                 <div class="flex flex-col md:col-span-2">
                     <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2" data-i18n="label_message">Tell us more about you or your organization</label>
                     <textarea name="message" rows="3" class="bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-white transition font-light resize-none"></textarea>
                 </div>
-
                 <div class="md:col-span-2 mt-8">
-                    <button type="submit" class="w-full bg-white text-black py-5 uppercase text-[10px] tracking-[0.4em] font-bold hover:bg-gray-200 transition duration-500">
-                        SUBMIT
-                    </button>
+                    <button type="submit" class="w-full bg-white text-black py-5 uppercase text-[10px] tracking-[0.4em] font-bold hover:bg-gray-200 transition duration-500">SUBMIT</button>
                 </div>
             </form>
         </div>
@@ -121,50 +126,62 @@
             en: {
                 nav_contact: "Become a Partner",
                 hero_sub: "International Collaboration Program",
-                hero_title: "Elevating Costa Blanca Real Estate.",
+                hero_title: "Costa Blanca Real Estate.",
                 hero_desc: "A high-touch partnership designed for elite international agents and their clients.",
+                benefits_title: "Partner Benefits",
+                benefits_sub: "Why collaborate with Amaru Resorts",
+                b1_t: "Protected Referrals", b1_d: "We never bypass you. Your client relationship is contractually protected.",
+                b2_t: "Generous Commissions", b2_d: "Receive 50% to 70% of our commission side, confirmed per deal.",
+                b3_t: "Exclusive Access", b3_d: "Upscale and off-plan opportunities in Malaga, Marbella, and Sotogrande.",
+                b4_t: "High-Touch Execution", b4_d: "Video tours, same-day replies, and support in your client meetings.",
                 contact_title: "Become a Partner",
-                label_fname: "Referrer First Name",
-                label_lname: "Referrer Last Name",
-                label_company: "Company",
-                label_country: "Country of Residence",
-                label_message: "Tell us more about you or your organization"
+                label_fname: "Referrer First Name", label_lname: "Referrer Last Name",
+                label_company: "Company", label_country: "Country", label_message: "About your organization"
             },
             fr: {
                 nav_contact: "Devenir Partenaire",
                 hero_sub: "Programme de Collaboration International",
-                hero_title: "L'excellence immobilière sur la Costa Blanca.",
-                hero_desc: "Un partenariat exclusif conçu pour les agents internationaux et leurs clients exigeants.",
+                hero_title: "Immobilier Costa Blanca.",
+                hero_desc: "Un partenariat premium pour les agents internationaux et leurs clients exigeants.",
+                benefits_title: "Avantages Partenaires",
+                benefits_sub: "Pourquoi collaborer avec Amaru Resorts",
+                b1_t: "Referrals Protégés", b1_d: "Nous ne vous contournons jamais. Votre relation client est protégée.",
+                b2_t: "Commissions Attractives", b2_d: "50% à 70% de notre part de commission, confirmé par transaction.",
+                b3_t: "Accès Exclusif", b3_d: "Biens de luxe et projets neufs à Malaga, Marbella et Sotogrande.",
+                b4_t: "Exécution Premium", b4_d: "Visites vidéo, réponses ultra-rapides et présence en visioconférence.",
                 contact_title: "Devenir Partenaire",
-                label_fname: "Prénom de l'apporteur",
-                label_lname: "Nom de l'apporteur",
-                label_company: "Société",
-                label_country: "Pays de résidence",
-                label_message: "Dites-nous en plus sur vous ou votre agence"
+                label_fname: "Prénom", label_lname: "Nom",
+                label_company: "Société", label_country: "Pays", label_message: "À propos de votre agence"
             },
             nl: {
                 nav_contact: "Partner Worden",
                 hero_sub: "Internationaal Samenwerkingsprogramma",
-                hero_title: "Vastgoed-excellentie aan de Costa Blanca.",
-                hero_desc: "Een hoogwaardig partnerschap ontworpen voor internationale agenten en hun klanten.",
+                hero_title: "Vastgoed Costa Blanca.",
+                hero_desc: "Een hoogwaardig partnerschap voor internationale agenten en hun klanten.",
+                benefits_title: "Partner Voordelen",
+                benefits_sub: "Waarom samenwerken met Amaru Resorts",
+                b1_t: "Beschermde Referrals", b1_d: "Wij omzeilen u nooit. Uw klantrelatie is contractueel beschermd.",
+                b2_t: "Royale Commissies", b2_d: "Ontvang 50% tot 70% van ons commissie-aandeel per deal.",
+                b3_t: "Exclusieve Toegang", b3_d: "Luxe woningen en off-plan projecten in Malaga, Marbella en Sotogrande.",
+                b4_t: "Persoonlijke Aanpak", b4_d: "Videotours, snelle reacties en ondersteuning bij klantgesprekken.",
                 contact_title: "Partner Worden",
-                label_fname: "Voornaam Verwijzer",
-                label_lname: "Achternaam Verwijzer",
-                label_company: "Bedrijf",
-                label_country: "Land van Verblijf",
-                label_message: "Vertel ons meer over uzelf of uw organisatie"
+                label_fname: "Voornaam", label_lname: "Achternaam",
+                label_company: "Bedrijf", label_country: "Land", label_message: "Over uw organisatie"
             },
             es: {
                 nav_contact: "Ser Socio",
                 hero_sub: "Programa de Colaboración Internacional",
-                hero_title: "Excelencia inmobiliaria en la Costa Blanca.",
+                hero_title: "Inmobiliaria Costa Blanca.",
                 hero_desc: "Una alianza exclusiva diseñada para agentes internacionales y sus clientes.",
+                benefits_title: "Beneficios para Socios",
+                benefits_sub: "Por qué colaborar con Amaru Resorts",
+                b1_t: "Referidos Protegidos", b1_d: "Nunca le puenteamos. Su relación con el cliente está protegida.",
+                b2_t: "Comisiones Generosas", b2_d: "50% al 70% de nuestra parte de la comisión, confirmado por trato.",
+                b3_t: "Acceso Exclusivo", b3_d: "Propiedades de lujo y proyectos sobre plano en Marbella y Sotogrande.",
+                b4_t: "Ejecución Premium", b4_d: "Tours en vídeo, respuestas rápidas y apoyo en reuniones con clientes.",
                 contact_title: "Ser Socio",
-                label_fname: "Nombre del referente",
-                label_lname: "Apellido del referente",
-                label_company: "Empresa",
-                label_country: "País de residencia",
-                label_message: "Cuéntenos más sobre usted o su organización"
+                label_fname: "Nombre", label_lname: "Apellido",
+                label_company: "Empresa", label_country: "País", label_message: "Sobre su organización"
             }
         };
 
