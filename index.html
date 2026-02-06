@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amaru Resorts | Partner Program</title>
+    <title>Amaru Resorts | Exclusive Partner Program</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -14,134 +14,164 @@
             url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=2000'); 
             background-size: cover; background-position: center; 
         }
-        [data-lang]:hidden { display: none; }
+        select option { background-color: #111; color: white; }
     </style>
 </head>
 <body class="text-gray-800">
 
-    <nav class="flex justify-between items-center px-6 md:px-12 py-6 absolute w-full z-20 text-white">
-        <div class="text-xl md:text-2xl font-bold tracking-widest uppercase">Amaru Resorts</div>
+    <nav class="flex justify-between items-center px-6 md:px-12 py-6 absolute w-full z-20 text-white font-light">
+        <div class="text-xl md:text-2xl font-bold tracking-[0.2em] uppercase">Amaru Resorts</div>
         
         <div class="flex items-center space-x-4 md:space-x-8">
-            <select onchange="changeLanguage(this.value)" class="bg-transparent border border-white/30 text-white text-xs uppercase tracking-widest px-2 py-1 focus:outline-none cursor-pointer hover:bg-white hover:text-black transition">
-                <option value="fr" class="text-black">FR</option>
-                <option value="en" class="text-black">EN</option>
-                <option value="nl" class="text-black">NL</option>
-                <option value="es" class="text-black">ES</option>
+            <select onchange="changeLanguage(this.value)" class="bg-transparent border border-white/30 text-white text-[10px] uppercase tracking-widest px-2 py-1 focus:outline-none cursor-pointer hover:bg-white hover:text-black transition">
+                <option value="en">EN</option>
+                <option value="fr">FR</option>
+                <option value="nl">NL</option>
+                <option value="es">ES</option>
             </select>
-            <a href="#contact" class="hidden md:block border border-white px-6 py-2 text-xs uppercase tracking-widest hover:bg-white hover:text-black transition">
-                <span data-i18n="nav_contact">Contact</span>
+            <a href="#contact" class="hidden md:block border border-white px-6 py-2 text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition">
+                <span data-i18n="nav_contact">Become a Partner</span>
             </a>
         </div>
     </nav>
 
     <section class="h-screen flex items-center justify-center text-center text-white hero-gradient px-4">
         <div class="max-w-4xl">
-            <span class="uppercase tracking-[0.3em] text-xs md:text-sm mb-4 block" data-i18n="hero_sub">Exclusive Partner Program</span>
-            <h1 class="text-5xl md:text-8xl mb-6" data-i18n="hero_title">L'excellence à la Costa del Sol.</h1>
-            <p class="text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed opacity-90" data-i18n="hero_desc">
-                Un partenariat de prestige pour vos clients les plus exigeants.
+            <span class="uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4 block" data-i18n="hero_sub">International Collaboration Program</span>
+            <h1 class="text-5xl md:text-8xl mb-6 font-light" data-i18n="hero_title">Elevating Costa del Sol Real Estate.</h1>
+            <p class="text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed opacity-80" data-i18n="hero_desc">
+                A high-touch partnership designed for elite international agents and their clients.
             </p>
         </div>
     </section>
 
-    <section class="py-24 px-8 max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-3 gap-16">
-            <div class="space-y-4">
-                <span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">01.</span>
-                <h3 class="text-2xl italic" data-i18n="feat1_title">Protection Totale</h3>
-                <p class="text-gray-500 font-light leading-relaxed" data-i18n="feat1_desc">Nous garantissons contractuellement la protection de vos referrals.</p>
-            </div>
-            <div class="space-y-4">
-                <span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">02.</span>
-                <h3 class="text-2xl italic" data-i18n="feat2_title">Rémunération</h3>
-                <p class="text-gray-500 font-light leading-relaxed" data-i18n="feat2_desc">Partage de commission de 50% à 70% sur notre part nette.</p>
-            </div>
-            <div class="space-y-4">
-                <span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">03.</span>
-                <h3 class="text-2xl italic" data-i18n="feat3_title">Multilingue</h3>
-                <p class="text-gray-500 font-light leading-relaxed" data-i18n="feat3_desc">Support complet en Français, Anglais, Néerlandais et Espagnol.</p>
-            </div>
-        </div>
-    </section>
-
     <section id="contact" class="py-24 bg-[#111] text-white px-8">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-4xl mb-12 text-center" data-i18n="contact_title">Devenir Partenaire</h2>
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <input type="text" placeholder="Nom / Name" class="bg-transparent border-b border-gray-700 py-3 focus:outline-none focus:border-white transition">
-                <input type="text" placeholder="Agence / Agency" class="bg-transparent border-b border-gray-700 py-3 focus:outline-none focus:border-white transition">
-                <button class="md:col-span-2 bg-white text-black py-4 uppercase text-xs tracking-widest font-bold hover:bg-gray-200 transition" data-i18n="contact_btn">
-                    Envoyer la demande
-                </button>
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl mb-4 font-light" data-i18n="contact_title">Become a Partner</h2>
+                <div class="w-12 h-[1px] bg-white mx-auto opacity-30"></div>
+            </div>
+            
+            <form action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+                
+                <div class="flex flex-col">
+                    <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2" data-i18n="label_fname">Referrer First Name</label>
+                    <input type="text" name="first_name" required class="bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-white transition font-light">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2" data-i18n="label_lname">Referrer Last Name</label>
+                    <input type="text" name="last_name" required class="bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-white transition font-light">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2" data-i18n="label_company">Company</label>
+                    <input type="text" name="company" required class="bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-white transition font-light">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2" data-i18n="label_country">Country of Residence</label>
+                    <input type="text" name="country" required class="bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-white transition font-light">
+                </div>
+
+                <div class="flex flex-col md:col-span-2">
+                    <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">E-mail</label>
+                    <input type="email" name="email" required class="bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-white transition font-light">
+                </div>
+
+                <div class="flex flex-col md:col-span-2">
+                    <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">Telephone</label>
+                    <div class="flex gap-4">
+                        <select name="country_code" class="bg-transparent border-b border-gray-800 py-3 text-white focus:outline-none focus:border-white transition w-24 text-sm font-light">
+                            <option value="+34">ES +34</option>
+                            <option value="+33">FR +33</option>
+                            <option value="+32">BE +32</option>
+                            <option value="+31">NL +31</option>
+                            <option value="+44">GB +44</option>
+                            <option value="+1">US +1</option>
+                            <option value="+41">CH +41</option>
+                            <option value="+49">DE +49</option>
+                            <option value="+971">AE +971</option>
+                            <option value="+352">LU +352</option>
+                            </select>
+                        <input type="tel" name="phone" required placeholder="Phone number" class="flex-1 bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-white transition font-light">
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:col-span-2">
+                    <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2" data-i18n="label_message">Tell us more about you or your organization</label>
+                    <textarea name="message" rows="3" class="bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-white transition font-light resize-none"></textarea>
+                </div>
+
+                <div class="md:col-span-2 mt-8">
+                    <button type="submit" class="w-full bg-white text-black py-5 uppercase text-[10px] tracking-[0.4em] font-bold hover:bg-gray-200 transition duration-500">
+                        SUBMIT
+                    </button>
+                </div>
             </form>
         </div>
     </section>
 
+    <footer class="py-12 text-center text-[10px] uppercase tracking-[0.3em] text-gray-500 bg-[#0c0c0c]">
+        &copy; 2024 Amaru Resorts | Marbella &bull; Estepona &bull; Sotogrande
+    </footer>
+
     <script>
         const translations = {
-            fr: {
-                nav_contact: "Contact",
-                hero_sub: "Programme Partenaires Exclusif",
-                hero_title: "L'excellence à la Costa del Sol.",
-                hero_desc: "Un partenariat de prestige pour vos clients les plus exigeants.",
-                feat1_title: "Protection Totale",
-                feat1_desc: "Nous garantissons contractuellement la protection de vos referrals.",
-                feat2_title: "Rémunération",
-                feat2_desc: "Partage de commission de 50% à 70% sur notre part nette.",
-                feat3_title: "Multilingue",
-                feat3_desc: "Support complet en Français, Anglais, Néerlandais et Espagnol.",
-                contact_title: "Devenir Partenaire",
-                contact_btn: "Envoyer la demande"
-            },
             en: {
-                nav_contact: "Contact",
-                hero_sub: "Exclusive Partner Program",
-                hero_title: "Excellence on the Costa del Sol.",
-                hero_desc: "A prestige partnership for your most demanding clients.",
-                feat1_title: "Total Protection",
-                feat1_desc: "We contractually guarantee the protection of your referrals.",
-                feat2_title: "Commission",
-                feat2_desc: "50% to 70% commission split on our net share.",
-                feat3_title: "Multilingual",
-                feat3_desc: "Full support in French, English, Dutch, and Spanish.",
+                nav_contact: "Become a Partner",
+                hero_sub: "International Collaboration Program",
+                hero_title: "Elevating Costa del Sol Real Estate.",
+                hero_desc: "A high-touch partnership designed for elite international agents and their clients.",
                 contact_title: "Become a Partner",
-                contact_btn: "Send Request"
+                label_fname: "Referrer First Name",
+                label_lname: "Referrer Last Name",
+                label_company: "Company",
+                label_country: "Country of Residence",
+                label_message: "Tell us more about you or your organization"
+            },
+            fr: {
+                nav_contact: "Devenir Partenaire",
+                hero_sub: "Programme de Collaboration International",
+                hero_title: "L'excellence immobilière sur la Costa del Sol.",
+                hero_desc: "Un partenariat exclusif conçu pour les agents internationaux et leurs clients exigeants.",
+                contact_title: "Devenir Partenaire",
+                label_fname: "Prénom de l'apporteur",
+                label_lname: "Nom de l'apporteur",
+                label_company: "Société",
+                label_country: "Pays de résidence",
+                label_message: "Dites-nous en plus sur vous ou votre agence"
             },
             nl: {
-                nav_contact: "Contact",
-                hero_sub: "Exclusief Partnerprogramma",
-                hero_title: "Excellentie aan de Costa del Sol.",
-                hero_desc: "Een prestigieus partnerschap voor uw meest veeleisende klanten.",
-                feat1_title: "Totale Bescherming",
-                feat1_desc: "Wij garanderen contractueel de bescherming van uw referrals.",
-                feat2_title: "Commissie",
-                feat2_desc: "50% tot 70% commissie op ons netto aandeel.",
-                feat3_title: "Meertalig",
-                feat3_desc: "Volledige ondersteuning in het Frans, Engels, Nederlands en Spaans.",
+                nav_contact: "Partner Worden",
+                hero_sub: "Internationaal Samenwerkingsprogramma",
+                hero_title: "Vastgoed-excellentie aan de Costa del Sol.",
+                hero_desc: "Een hoogwaardig partnerschap ontworpen voor internationale agenten en hun klanten.",
                 contact_title: "Partner Worden",
-                contact_btn: "Aanvraag Verzenden"
+                label_fname: "Voornaam Verwijzer",
+                label_lname: "Achternaam Verwijzer",
+                label_company: "Bedrijf",
+                label_country: "Land van Verblijf",
+                label_message: "Vertel ons meer over uzelf of uw organisatie"
             },
             es: {
-                nav_contact: "Contacto",
-                hero_sub: "Programa Exclusivo de Socios",
-                hero_title: "Excelencia en la Costa del Sol.",
-                hero_desc: "Una alianza de prestigio para sus clientes más exigentes.",
-                feat1_title: "Protección Total",
-                feat1_desc: "Garantizamos contractualmente la protección de sus referidos.",
-                feat2_title: "Comisión",
-                feat2_desc: "Reparto de comisión del 50% al 70% de nuestra parte neta.",
-                feat3_title: "Multilingüe",
-                feat3_desc: "Soporte completo en francés, inglés, holandés y español.",
+                nav_contact: "Ser Socio",
+                hero_sub: "Programa de Colaboración Internacional",
+                hero_title: "Excelencia inmobiliaria en la Costa del Sol.",
+                hero_desc: "Una alianza exclusiva diseñada para agentes internacionales y sus clientes.",
                 contact_title: "Ser Socio",
-                contact_btn: "Enviar Solicitud"
+                label_fname: "Nombre del referente",
+                label_lname: "Apellido del referente",
+                label_company: "Empresa",
+                label_country: "País de residencia",
+                label_message: "Cuéntenos más sobre usted o su organización"
             }
         };
 
         function changeLanguage(lang) {
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                el.textContent = translations[lang][key];
+                if(translations[lang][key]) el.textContent = translations[lang][key];
             });
             document.documentElement.lang = lang;
         }
