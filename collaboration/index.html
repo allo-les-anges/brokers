@@ -110,8 +110,14 @@
                     <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2" data-i18n="label_message">Tell us more about you or your organization</label>
                     <textarea name="message" rows="3" class="bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-white transition font-light resize-none"></textarea>
                 </div>
-                <div class="md:col-span-2 mt-8">
-                    <button type="submit" class="w-full bg-white text-black py-5 uppercase text-[10px] tracking-[0.4em] font-bold hover:bg-gray-200 transition duration-500">SUBMIT</button>
+                
+                <div class="md:col-span-2 mt-8 flex flex-col md:flex-row gap-4">
+                    <button type="submit" class="w-full md:w-1/2 bg-white text-black py-5 uppercase text-[10px] tracking-[0.4em] font-bold hover:bg-gray-200 transition duration-500">
+                        SUBMIT
+                    </button>
+                    <a href="https://bookings.zoho.eu/v/votre-compte" target="_blank" class="w-full md:w-1/2 border border-white text-white py-5 uppercase text-[10px] tracking-[0.4em] font-bold hover:bg-white hover:text-black transition duration-500 flex items-center justify-center text-center">
+                        <span data-i18n="btn_appointment">Book a Meeting</span>
+                    </a>
                 </div>
             </form>
         </div>
@@ -136,7 +142,8 @@
                 b4_t: "High-Touch Execution", b4_d: "Video tours, same-day replies, and support in your client meetings.",
                 contact_title: "Become a Partner",
                 label_fname: "Referrer First Name", label_lname: "Referrer Last Name",
-                label_company: "Company", label_country: "Country", label_message: "About your organization"
+                label_company: "Company", label_country: "Country", label_message: "About your organization",
+                btn_appointment: "Book a Meeting"
             },
             fr: {
                 nav_contact: "Devenir Partenaire",
@@ -151,7 +158,8 @@
                 b4_t: "Exécution Premium", b4_d: "Visites vidéo, réponses ultra-rapides et présence en visioconférence.",
                 contact_title: "Devenir Partenaire",
                 label_fname: "Prénom", label_lname: "Nom",
-                label_company: "Société", label_country: "Pays", label_message: "À propos de votre agence"
+                label_company: "Société", label_country: "Pays", label_message: "À propos de votre agence",
+                btn_appointment: "Demander un RDV"
             },
             nl: {
                 nav_contact: "Partner Worden",
@@ -166,7 +174,8 @@
                 b4_t: "Persoonlijke Aanpak", b4_d: "Videotours, snelle reacties en ondersteuning bij klantgesprekken.",
                 contact_title: "Partner Worden",
                 label_fname: "Voornaam", label_lname: "Achternaam",
-                label_company: "Bedrijf", label_country: "Land", label_message: "Over uw organisatie"
+                label_company: "Bedrijf", label_country: "Land", label_message: "Over uw organisatie",
+                btn_appointment: "Afspraak maken"
             },
             es: {
                 nav_contact: "Ser Socio",
@@ -178,10 +187,11 @@
                 b1_t: "Referidos Protegidos", b1_d: "Nunca le puenteamos. Su relación con el cliente está protegida.",
                 b2_t: "Comisiones Generosas", b2_d: "50% al 70% de nuestra parte de la comisión, confirmado por trato.",
                 b3_t: "Acceso Exclusivo", b3_d: "Propiedades de lujo y proyectos sobre plano en Moraira y Moraira.",
-                b4_t: "Ejecución Premium", b4_d: "Tours en vídeo, respuestas rápidas y apoyo en reuniones con clientes.",
+                b4_t: "Ejecución Premium", b4_d: "Tours en vidéo, respuestas rápidas y apoyo en reuniones con clientes.",
                 contact_title: "Ser Socio",
                 label_fname: "Nombre", label_lname: "Apellido",
-                label_company: "Empresa", label_country: "País", label_message: "Sobre su organización"
+                label_company: "Empresa", label_country: "País", label_message: "Sobre su organización",
+                btn_appointment: "Reservar Cita"
             }
         };
 
@@ -195,4 +205,3 @@
     </script>
 </body>
 </html>
-
