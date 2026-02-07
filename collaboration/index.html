@@ -6,6 +6,9 @@
     <title>Amaru Resorts | Exclusive Partner Program</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script id="zs-rich-snippet-script" src="https://bookings.zoho.eu/js/book-appointment.js"></script>
+    
     <style>
         body { font-family: 'Montserrat', sans-serif; background-color: #FAF9F6; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
@@ -115,9 +118,12 @@
                     <button type="submit" class="w-full md:w-1/2 bg-white text-black py-5 uppercase text-[10px] tracking-[0.4em] font-bold hover:bg-gray-200 transition duration-500">
                         SUBMIT
                     </button>
-                    <a href="https://amaruresorts.zohobookings.eu/#/252944000000047054" target="_blank" class="w-full md:w-1/2 border border-white text-white py-5 uppercase text-[10px] tracking-[0.4em] font-bold hover:bg-white hover:text-black transition duration-500 flex items-center justify-center text-center">
+                    
+                    <button type="button" 
+                            onclick="zs_open_window('https://amaruresorts.zohobookings.eu/portal-embed#/252944000000047054', '700', '750');" 
+                            class="w-full md:w-1/2 border border-white text-white py-5 uppercase text-[10px] tracking-[0.4em] font-bold hover:bg-white hover:text-black transition duration-500 flex items-center justify-center">
                         <span data-i18n="btn_appointment">Book a Meeting</span>
-                    </a>
+                    </button>
                 </div>
             </form>
         </div>
@@ -138,7 +144,7 @@
                 benefits_sub: "Why collaborate with Amaru Resorts",
                 b1_t: "Protected Referrals", b1_d: "We never bypass you. Your client relationship is contractually protected.",
                 b2_t: "Generous Commissions", b2_d: "Receive 50% to 70% of our commission side, confirmed per deal.",
-                b3_t: "Exclusive Access", b3_d: "Upscale and off-plan opportunities in Altea, Moraira, and Moraira.",
+                b3_t: "Exclusive Access", b3_d: "Upscale and off-plan opportunities in Altea, Javea, and Moraira.",
                 b4_t: "High-Touch Execution", b4_d: "Video tours, same-day replies, and support in your client meetings.",
                 contact_title: "Become a Partner",
                 label_fname: "Referrer First Name", label_lname: "Referrer Last Name",
@@ -154,7 +160,7 @@
                 benefits_sub: "Pourquoi collaborer avec Amaru Resorts",
                 b1_t: "Referrals Protégés", b1_d: "Nous ne vous contournons jamais. Votre relation client est protégée.",
                 b2_t: "Commissions Attractives", b2_d: "50% à 70% de notre part de commission, confirmé par transaction.",
-                b3_t: "Accès Exclusif", b3_d: "Biens de luxe et projets neufs à Altea, Moraira et Moraira.",
+                b3_t: "Accès Exclusif", b3_d: "Biens de luxe et projets neufs à Altea, Javea et Moraira.",
                 b4_t: "Exécution Premium", b4_d: "Visites vidéo, réponses ultra-rapides et présence en visioconférence.",
                 contact_title: "Devenir Partenaire",
                 label_fname: "Prénom", label_lname: "Nom",
@@ -170,8 +176,8 @@
                 benefits_sub: "Waarom samenwerken met Amaru Resorts",
                 b1_t: "Beschermde Referrals", b1_d: "Wij omzeilen u nooit. Uw klantrelatie is contractueel beschermd.",
                 b2_t: "Royale Commissies", b2_d: "Ontvang 50% tot 70% van ons commissie-aandeel per deal.",
-                b3_t: "Exclusieve Toegang", b3_d: "Luxe woningen en off-plan projecten in Altea, Moraira en Moraira.",
-                b4_t: "Persoonlijke Aanpak", b4_d: "Videotours, snelle reacties en ondersteuning bij klantgesprekken.",
+                b3_t: "Exclusieve Toegang", b3_d: "Luxe woningen en projecten in Altea, Javea en Moraira.",
+                b4_t: "Persoonlijke Aanpak", b4_d: "Videotours, snelle reacties en ondersteuning bij gesprekken.",
                 contact_title: "Partner Worden",
                 label_fname: "Voornaam", label_lname: "Achternaam",
                 label_company: "Bedrijf", label_country: "Land", label_message: "Over uw organisatie",
@@ -185,9 +191,9 @@
                 benefits_title: "Beneficios para Socios",
                 benefits_sub: "Por qué colaborar con Amaru Resorts",
                 b1_t: "Referidos Protegidos", b1_d: "Nunca le puenteamos. Su relación con el cliente está protegida.",
-                b2_t: "Comisiones Generosas", b2_d: "50% al 70% de nuestra parte de la comisión, confirmado por trato.",
-                b3_t: "Acceso Exclusivo", b3_d: "Propiedades de lujo y proyectos sobre plano en Moraira y Moraira.",
-                b4_t: "Ejecución Premium", b4_d: "Tours en vidéo, respuestas rápidas y apoyo en reuniones con clientes.",
+                b2_t: "Comisiones Generosas", b2_d: "50% al 70% de nuestra parte de la comisión por trato.",
+                b3_t: "Acceso Exclusivo", b3_d: "Propiedades de lujo y proyectos sobre plano en Altea y Javea.",
+                b4_t: "Ejecución Premium", b4_d: "Tours en vídeo, respuestas rápidas y apoyo en reuniones.",
                 contact_title: "Ser Socio",
                 label_fname: "Nombre", label_lname: "Apellido",
                 label_company: "Empresa", label_country: "País", label_message: "Sobre su organización",
@@ -201,6 +207,12 @@
                 if(translations[lang][key]) el.textContent = translations[lang][key];
             });
             document.documentElement.lang = lang;
+        }
+
+        function zs_open_window(url, height, width) {
+            var leftPos = (screen.width - width) / 2;
+            var topPos = (screen.height - height) / 2;
+            window.open(url, 'zobookings', 'width=' + width + ',height=' + height + ',top=' + topPos + ',left=' + leftPos + ',scrollbars=yes,resizable=yes');
         }
     </script>
 </body>
