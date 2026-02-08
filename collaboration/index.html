@@ -1,231 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amaru Resorts | Exclusive Partner Program</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amaru Resorts | Exclusive Partner Program</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <script id="zs-rich-snippet-script" src="https://bookings.zoho.eu/js/book-appointment.js"></script>
+    
+    <style>
+        :root { --bg-beige: #FAF9F6; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-beige); scroll-behavior: smooth; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-<script id="zs-rich-snippet-script" src="https://bookings.zoho.eu/js/book-appointment.js"></script>
+        /* Animation Hero - Zoom Lent */
+        @keyframes kenburns {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        .hero-bg {
+            animation: kenburns 25s ease-out infinite alternate;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover; background-position: center;
+        }
 
-<style>
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #FAF9F6;
-    scroll-behavior: smooth;
-}
-h1,h2,h3 { font-family: 'Playfair Display', serif; }
+        /* Nav Glassmorphism au scroll */
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding-top: 1rem; padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
 
-.hero {
-    background:
-        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
-        url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=2000');
-    background-size: cover;
-    background-position: center;
-    animation: slowZoom 25s ease-in-out infinite alternate;
-}
+        /* Fil conducteur visuel */
+        .section-line {
+            width: 1px; height: 80px; background: currentColor; opacity: 0.15; margin: 0 auto 2rem;
+        }
 
-@keyframes slowZoom {
-    from { background-size: 100%; }
-    to { background-size: 108%; }
-}
+        /* Hover Cartes Luxe */
+        .model-card { transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .model-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .model-card-dark:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
-.section-line {
-    width: 48px;
-    height: 1px;
-    background: currentColor;
-    opacity: .2;
-    margin: 1.5rem auto 0;
-}
+        /* Noise effect discret */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.03; pointer-events: none; z-index: 9999;
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+        }
 
-.model-card {
-    transition: all .5s cubic-bezier(.4,0,.2,1);
-}
-.model-card:hover {
-    transform: translateY(-6px);
-}
-
-.benefit-number {
-    font-size: 3rem;
-    font-weight: 200;
-    opacity: .05;
-    position: absolute;
-    top: -20px;
-    left: 0;
-}
-</style>
+        /* Fade-in texte hero */
+        .fade-in-up {
+            opacity: 0; transform: translateY(20px);
+            animation: fadeInUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
+<body class="text-gray-900">
 
-<body class="text-gray-800">
-
-<!-- NAV -->
-<nav id="nav" class="fixed top-0 w-full z-30 transition-all duration-500">
-<div class="flex justify-between items-center px-6 md:px-12 py-5 text-white">
-    <div class="text-xl md:text-2xl font-bold tracking-[0.25em] uppercase">Amaru Resorts</div>
-    <div class="flex items-center space-x-6">
-        <select onchange="changeLanguage(this.value)" class="bg-transparent border border-white/30 text-white text-[10px] uppercase tracking-widest px-2 py-1 hover:bg-white hover:text-black transition">
-            <option value="en">EN</option>
-            <option value="fr">FR</option>
-            <option value="nl">NL</option>
-            <option value="es">ES</option>
-        </select>
-        <a href="#contact" class="hidden md:block border border-white px-6 py-2 text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition">
-            <span data-i18n="nav_contact">Become a Partner</span>
-        </a>
-    </div>
-</div>
-</nav>
-
-<!-- HERO -->
-<section class="h-screen flex items-center justify-center text-center text-white hero px-6">
-<div class="max-w-4xl opacity-0 animate-[fadeIn_1.5s_ease_forwards]">
-    <span class="uppercase tracking-[0.4em] text-[10px] block mb-6 opacity-70" data-i18n="hero_sub">
-        International Collaboration Program
-    </span>
-    <h1 class="text-5xl md:text-8xl font-light mb-8" data-i18n="hero_title">
-        Costa Blanca Real Estate.
-    </h1>
-    <p class="text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed opacity-80" data-i18n="hero_desc">
-        A high-touch partnership designed for elite international agents and their clients.
-    </p>
-    <div class="mt-10 text-[10px] uppercase tracking-widest opacity-60">
-        Trusted by international partners across Europe
-    </div>
-</div>
-</section>
-
-<!-- BENEFITS -->
-<section class="py-28 px-8 max-w-6xl mx-auto">
-<div class="text-center mb-24">
-    <h2 class="text-4xl font-light mb-2" data-i18n="benefits_title">Partner Benefits</h2>
-    <p class="text-gray-400 uppercase tracking-widest text-xs" data-i18n="benefits_sub">
-        Why collaborate with Amaru Resorts
-    </p>
-    <div class="section-line"></div>
-</div>
-
-<div class="grid md:grid-cols-2 gap-x-20 gap-y-16">
-    <div class="relative">
-        <div class="benefit-number">01</div>
-        <h3 class="text-xl italic mb-3" data-i18n="b1_t">Protected Referrals</h3>
-        <p class="text-gray-500 font-light text-sm leading-relaxed" data-i18n="b1_d">
-            Your client relationship is contractually protected. Always.
-        </p>
-    </div>
-    <div class="relative">
-        <div class="benefit-number">02</div>
-        <h3 class="text-xl italic mb-3" data-i18n="b2_t">Generous Commissions</h3>
-        <p class="text-gray-500 font-light text-sm leading-relaxed" data-i18n="b2_d">
-            Receive 50% to 70% of our side of the commission.
-        </p>
-    </div>
-    <div class="relative">
-        <div class="benefit-number">03</div>
-        <h3 class="text-xl italic mb-3" data-i18n="b3_t">Exclusive Access</h3>
-        <p class="text-gray-500 font-light text-sm leading-relaxed" data-i18n="b3_d">
-            Partner-only access to curated off-market opportunities.
-        </p>
-    </div>
-    <div class="relative">
-        <div class="benefit-number">04</div>
-        <h3 class="text-xl italic mb-3" data-i18n="b4_t">High-Touch Execution</h3>
-        <p class="text-gray-500 font-light text-sm leading-relaxed" data-i18n="b4_d">
-            Fast replies, video tours and joint client meetings.
-        </p>
-    </div>
-</div>
-</section>
-
-<!-- MODELS -->
-<section class="py-28 bg-white px-8">
-<div class="max-w-6xl mx-auto">
-<div class="text-center mb-24">
-    <h2 class="text-4xl font-light mb-2" data-i18n="models_title">Our Collaboration Models</h2>
-    <div class="section-line text-black"></div>
-</div>
-
-<div class="grid md:grid-cols-3 gap-10">
-    <!-- Model 01 -->
-    <div class="model-card p-10 border border-gray-100 bg-[#FAF9F6] flex flex-col justify-between min-h-[420px]">
-        <div>
-            <span class="text-xs uppercase tracking-[0.3em] text-gray-400 mb-6 block">Model 01</span>
-            <h3 class="text-2xl italic mb-4">Referral</h3>
-            <div class="text-4xl font-extralight mb-6">25%</div>
-            <p class="text-gray-500 font-light text-sm leading-relaxed">
-                You bring the client. We handle everything from A to Z.
-            </p>
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 px-6 md:px-12 py-8 text-white flex justify-between items-center font-light">
+        <div class="text-xl md:text-2xl font-bold tracking-[0.3em] uppercase">Amaru Resorts</div>
+        <div class="flex items-center space-x-6">
+            <select onchange="changeLanguage(this.value)" class="bg-transparent border border-white/20 text-[10px] uppercase tracking-[0.2em] px-3 py-1.5 focus:outline-none cursor-pointer hover:bg-white hover:text-black transition duration-500 rounded-none appearance-none text-center min-w-[50px]">
+                <option value="en" class="bg-black">EN</option>
+                <option value="fr" class="bg-black">FR</option>
+                <option value="nl" class="bg-black">NL</option>
+                <option value="es" class="bg-black">ES</option>
+            </select>
+            <a href="#contact" class="group relative overflow-hidden border border-white/40 px-8 py-2.5 text-[10px] uppercase tracking-[0.3em] transition-all duration-700 hover:border-white">
+                <span class="relative z-10" data-i18n="nav_contact">Become a Partner</span>
+                <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                <style>.group:hover span { color: black; transition: color 0.5s; }</style>
+            </a>
         </div>
-        <button onclick="zs_open_window('https://amaruresorts.zohobookings.eu/portal-embed#/252944000000047054','700','750')"
-        class="text-[10px] uppercase tracking-widest border-b border-black w-max pb-1 opacity-60 hover:opacity-100 transition">
-            Learn More
-        </button>
-    </div>
+    </nav>
 
-    <!-- Model 02 -->
-    <div class="model-card p-10 bg-black text-white shadow-xl md:-translate-y-6 flex flex-col justify-between min-h-[420px]">
-        <div>
-            <span class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-6 block">Model 02</span>
-            <h3 class="text-2xl italic mb-4">Subscription</h3>
-            <div class="text-4xl font-extralight mb-6">45%</div>
-            <p class="text-gray-400 font-light text-sm leading-relaxed">
-                Active partnership. We close deals together.
+    <section class="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
+        <div class="absolute inset-0 hero-bg z-0"></div>
+        <div class="relative z-10 max-w-5xl px-6 fade-in-up">
+            <span class="uppercase tracking-[0.6em] text-[10px] md:text-xs mb-8 block opacity-70" data-i18n="hero_sub">International Collaboration Program</span>
+            <h1 class="text-5xl md:text-[7rem] mb-8 font-extralight leading-none tracking-tight" data-i18n="hero_title">Costa Blanca <br>Real Estate.</h1>
+            <p class="text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed opacity-60 mb-10" data-i18n="hero_desc">
+                A high-touch partnership designed for elite international agents and their clients.
             </p>
+            <div class="flex flex-col items-center opacity-40">
+                <div class="w-[1px] h-12 bg-white mb-4"></div>
+                <span class="text-[9px] uppercase tracking-[0.4em]">Trusted by international agents across Europe</span>
+            </div>
         </div>
-        <button onclick="zs_open_window('https://amaruresorts.zohobookings.eu/portal-embed#/252944000000047054','700','750')"
-        class="text-[10px] uppercase tracking-widest border-b border-white w-max pb-1">
-            Learn More
-        </button>
-    </div>
+    </section>
 
-    <!-- Model 03 -->
-    <div class="model-card p-10 border border-gray-100 bg-[#FAF9F6] flex flex-col justify-between min-h-[420px]">
-        <div>
-            <span class="text-xs uppercase tracking-[0.3em] text-gray-400 mb-6 block">Model 03</span>
-            <h3 class="text-2xl italic mb-4">Service Buy</h3>
-            <div class="text-4xl font-extralight mb-6">100%</div>
-            <p class="text-gray-500 font-light text-sm leading-relaxed">
-                Keep full commission. Buy only what you need.
-            </p>
+    <section class="py-32 px-8 max-w-6xl mx-auto relative">
+        <div class="section-line text-black"></div>
+        <div class="text-center mb-24">
+            <h2 class="text-4xl md:text-5xl font-light mb-6" data-i18n="benefits_title">Partner Benefits</h2>
+            <p class="text-gray-400 uppercase tracking-[0.4em] text-[10px]" data-i18n="benefits_sub">Why collaborate with Amaru Resorts</p>
         </div>
-        <button onclick="zs_open_window('https://amaruresorts.zohobookings.eu/portal-embed#/252944000000047054','700','750')"
-        class="text-[10px] uppercase tracking-widest border-b border-black w-max pb-1 opacity-60 hover:opacity-100 transition">
-            Learn More
-        </button>
-    </div>
-</div>
-</div>
-</section>
+        <div class="grid md:grid-cols-2 gap-x-20 gap-y-16">
+            <div class="group">
+                <span class="text-xs font-serif italic text-gray-300 block mb-2 transition-colors group-hover:text-black">01 —</span>
+                <h3 class="text-2xl mb-4 italic" data-i18n="b1_t">Protected Referrals</h3>
+                <p class="text-gray-500 font-light text-sm leading-relaxed border-l border-gray-100 pl-6 transition-colors group-hover:border-black" data-i18n="b1_d">We never bypass you. Your relationship with your client is our priority and is contractually protected.</p>
+            </div>
+            <div class="group">
+                <span class="text-xs font-serif italic text-gray-300 block mb-2 transition-colors group-hover:text-black">02 —</span>
+                <h3 class="text-2xl mb-4 italic" data-i18n="b2_t">Generous Commissions</h3>
+                <p class="text-gray-500 font-light text-sm leading-relaxed border-l border-gray-100 pl-6 transition-colors group-hover:border-black" data-i18n="b2_d">Receive 50% to 70% of our side of the commission, confirmed transparently per deal.</p>
+            </div>
+            <div class="group">
+                <span class="text-xs font-serif italic text-gray-300 block mb-2 transition-colors group-hover:text-black">03 —</span>
+                <h3 class="text-2xl mb-4 italic" data-i18n="b3_t">Exclusive Access</h3>
+                <p class="text-gray-500 font-light text-sm leading-relaxed border-l border-gray-100 pl-6 transition-colors group-hover:border-black" data-i18n="b3_d">Curated upscale and off-plan opportunities in Altea, Javea, and Moraira (partner-only access).</p>
+            </div>
+            <div class="group">
+                <span class="text-xs font-serif italic text-gray-300 block mb-2 transition-colors group-hover:text-black">04 —</span>
+                <h3 class="text-2xl mb-4 italic" data-i18n="b4_t">High-Touch Execution</h3>
+                <p class="text-gray-500 font-light text-sm leading-relaxed border-l border-gray-100 pl-6 transition-colors group-hover:border-black" data-i18n="b4_d">Video tours, same-day replies, and we can join your client meetings to keep you in full control.</p>
+            </div>
+        </div>
+    </section>
 
-<!-- CONTACT -->
-<section id="contact" class="py-28 bg-[#111] text-white px-8">
-<div class="max-w-4xl mx-auto text-center mb-16">
-    <h2 class="text-4xl md:text-5xl font-light mb-4" data-i18n="contact_title">Become a Partner</h2>
-    <div class="section-line text-white"></div>
-</div>
+    <section class="py-32 bg-white px-8 border-y border-gray-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-line text-black"></div>
+            <div class="text-center mb-24">
+                <h2 class="text-4xl md:text-5xl font-light mb-6" data-i18n="models_title">Collaboration Models</h2>
+            </div>
 
-<!-- (form inchangé volontairement pour stabilité) -->
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="model-card group p-12 bg-[#FAF9F6] flex flex-col justify-between min-h-[480px]">
+                    <div>
+                        <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400 mb-10 block">Model 01</span>
+                        <h3 class="text-3xl mb-6 italic" data-i18n="m1_t">Referral</h3>
+                        <div class="flex items-baseline gap-2 mb-8">
+                            <span class="text-5xl font-extralight italic">25%</span>
+                            <span class="text-[9px] uppercase tracking-widest text-gray-400">Share</span>
+                        </div>
+                        <p class="text-gray-500 font-light text-sm leading-relaxed mb-10" data-i18n="m1_d">You bring the client, we handle everything from A to Z. Simple, transparent, and efficient.</p>
+                    </div>
+                    <button onclick="zs_open_window('https://amaruresorts.zohobookings.eu/portal-embed#/252944000000047054', '700', '750');" 
+                            class="text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-black/20 w-max pb-2 group-hover:border-black transition-all duration-700">
+                        <span data-i18n="m_btn">Learn More</span>
+                    </button>
+                </div>
 
-</section>
+                <div class="model-card model-card-dark group p-12 bg-black text-white transform md:-translate-y-8 flex flex-col justify-between min-h-[480px]">
+                    <div>
+                        <span class="text-[10px] uppercase tracking-[0.4em] text-gray-500 mb-10 block">Model 02</span>
+                        <h3 class="text-3xl mb-6 italic text-white" data-i18n="m2_t">Subscription</h3>
+                        <div class="flex items-baseline gap-2 mb-8">
+                            <span class="text-5xl font-extralight italic">45%</span>
+                            <span class="text-[9px] uppercase tracking-widest text-gray-600">Share</span>
+                        </div>
+                        <p class="text-gray-400 font-light text-sm leading-relaxed mb-10" data-i18n="m2_d">Stay where you are. We close the deal together and share the rewards. The preferred choice for active partners.</p>
+                    </div>
+                    <button onclick="zs_open_window('https://amaruresorts.zohobookings.eu/portal-embed#/252944000000047054', '700', '750');" 
+                            class="text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-white/20 w-max pb-2 group-hover:border-white transition-all duration-700">
+                        <span data-i18n="m_btn">Learn More</span>
+                    </button>
+                </div>
 
-<footer class="py-12 text-center text-[10px] uppercase tracking-[0.3em] text-gray-500 bg-[#0c0c0c]">
-© 2026 Amaru Resorts · Costa Blanca
-</footer>
+                <div class="model-card group p-12 bg-[#FAF9F6] flex flex-col justify-between min-h-[480px]">
+                    <div>
+                        <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400 mb-10 block">Model 03</span>
+                        <h3 class="text-3xl mb-6 italic" data-i18n="m3_t">Service Buy</h3>
+                        <div class="flex items-baseline gap-2 mb-8">
+                            <span class="text-5xl font-extralight italic">100%</span>
+                            <span class="text-[9px] uppercase tracking-widest text-gray-400">Share</span>
+                        </div>
+                        <p class="text-gray-500 font-light text-sm leading-relaxed mb-10" data-i18n="m3_d">Wanna keep 100%? Just buy our professional services and the entire commission is all yours.</p>
+                    </div>
+                    <button onclick="zs_open_window('https://amaruresorts.zohobookings.eu/portal-embed#/252944000000047054', '700', '750');" 
+                            class="text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-black/20 w-max pb-2 group-hover:border-black transition-all duration-700">
+                        <span data-i18n="m_btn">Learn More</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-window.addEventListener('scroll', () => {
-    const nav = document.getElementById('nav');
-    if (window.scrollY > 50) {
-        nav.classList.add('bg-black/70','backdrop-blur');
-    } else {
-        nav.classList.remove('bg-black/70','backdrop-blur');
-    }
-});
+    <section id="contact" class="py-32 bg-[#111] text-white px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="section-line text-white"></div>
+            <div class="text-center mb-24">
+                <h2 class="text-4xl md:text-5xl mb-6 font-light" data-i18n="contact_title">Become a Partner</h2>
+                <p class="text-gray-500 uppercase tracking-[0.4em] text-[10px]">Confidential Application</p>
+            </div>
+            
+            <form action="https://formspree.io/f/maqdwkea" method="POST" class="space-y-20">
+                <div>
+                    <span class="text-[9px] uppercase tracking-[0.4em] text-gray-600 mb-8 block">01 / Personal Identity</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+                        <div class="flex flex-col">
+                            <label class="text-[9px] uppercase tracking-[0.3em] text-gray-500 mb-3" data-i18n="label_fname">First Name</label>
+                            <input type="text" name="first_name" required class="bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-white transition-colors duration-700 font-light">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-[9px] uppercase tracking-[0.3em] text-gray-500 mb-3" data-i18n="label_lname">Last Name</label>
+                            <input type="text" name="last_name" required class="bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-white transition-colors duration-700 font-light">
+                        </div>
+                    </div>
+                </div>
 
-function zs_open_window(url,h,w){
-    window.open(url,'zobookings',`width=${w},height=${h},scrollbars=yes,resizable=yes`);
-}
-</script>
+                <div>
+                    <span class="text-[9px] uppercase tracking-[0.4em] text-gray-600 mb-8 block">02 / Professional Data</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+                        <div class="flex flex-col">
+                            <label class="text-[9px] uppercase tracking-[0.3em] text-gray-500 mb-3" data-i18n="label_company">Company</label>
+                            <input type="text" name="company" required class="bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-white transition-colors duration-700 font-light">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-[9px] uppercase tracking-[0.3em] text-gray-500 mb-3" data-i18n="label_country">Country</label>
+                            <input type="text" name="country" required class="bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-white transition-colors duration-700 font-light">
+                        </div>
+                    </div>
+                </div>
 
+                <div>
+                    <span class="text-[9px] uppercase tracking-[0.4em] text-gray-600 mb-8 block">03 / Communication</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 mb-12">
+                        <div class="flex flex-col md:col-span-1">
+                            <label class="text-[9px] uppercase tracking-[0.3em] text-gray-500 mb-3">E-mail</label>
+                            <input type="email" name="email" required class="bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-white transition-colors duration-700 font-light">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-[9px] uppercase tracking-[0.3em] text-gray-500 mb-3">Telephone</label>
+                            <div class="flex gap-4">
+                                <select name="country_code" class="bg-transparent border-b border-white/10 py-4 text-white focus:outline-none w-20 text-xs font-light">
+                                    <option value="+34">ES +34</option><option value="+33">FR +33</option><option value="+32">BE +32</option><option value="+31">NL +31</option><option value="+44">GB +44</option><option value="+1">US +1</option>
+                                </select>
+                                <input type="tel" name="phone" required class="flex-1 bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-white transition-colors duration-700 font-light">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-[9px] uppercase tracking-[0.3em] text-gray-500 mb-3" data-i18n="label_message">About your organization</label>
+                        <textarea name="message" rows="3" class="bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-white transition-colors duration-700 font-light resize-none"></textarea>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10">
+                    <button type="submit" class="bg-white text-black h-20 uppercase text-[10px] tracking-[0.5em] font-bold hover:bg-gray-200 transition-all duration-700">
+                        SUBMIT APPLICATION
+                    </button>
+                    <button type="button" 
+                            onclick="zs_open_window('https://amaruresorts.zohobookings.eu/portal-embed#/252944000000047054', '700', '750');" 
+                            class="border border-white/20 text-white h-20 uppercase text-[10px] tracking-[0.5em] font-bold hover:bg-white hover:text-black transition-all duration-700 flex items-center justify-center">
+                        <span data-i18n="btn_appointment">Book a Meeting</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-20 text-center text-[10px] uppercase tracking-[0.4em] text-gray-600 bg-[#0c0c0c] border-t border-white/5">
+        &copy; 2026 Amaru Resorts | Altea &bull; Javea &bull; Moraira
+    </footer>
+
+    <script>
+        // Nav Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        const translations = {
+            en: {
+                nav_contact: "Become a Partner",
+                hero_sub: "International Collaboration Program",
+                hero_title: "Costa Blanca <br>Real Estate.",
+                hero_desc: "A high-touch partnership designed for elite international agents and their clients.",
+                benefits_title: "Partner Benefits",
+                benefits_sub: "Why collaborate with Amaru Resorts",
+                b1_t: "Protected Referrals", b1_d: "We never bypass you. Your client relationship is contractually protected.",
+                b2_t: "Generous Commissions", b2_d: "Receive 50% to 70% of our commission side, confirmed per deal.",
+                b3_t: "Exclusive Access", b3_d: "Upscale and off-plan opportunities in Altea, Javea, and Moraira.",
+                b4_t: "High-Touch Execution", b4_d: "Video tours, same-day replies, and support in your client meetings.",
+                models_title: "Collaboration Models",
+                m1_t: "Referral", m1_d: "You bring the client, we handle everything from A to Z.",
+                m2_t: "Subscription", m2_d: "Stay where you are. We close the deal together and share the rewards.",
+                m3_t: "Service Buy", m3_d: "Keep 100% of the commission by purchasing our professional services.",
+                m_btn: "Enquire Now",
+                contact_title: "Become a Partner",
+                label_fname: "First Name", label_lname: "Last Name",
+                label_company: "Company", label_country: "Country", label_message: "About your organization",
+                btn_appointment: "Book a Meeting"
+            },
+            fr: {
+                nav_contact: "Devenir Partenaire",
+                hero_sub: "Programme de Collaboration International",
+                hero_title: "Immobilier <br>Costa Blanca.",
+                hero_desc: "Un partenariat premium pour les agents internationaux et leurs clients exigeants.",
+                benefits_title: "Avantages Partenaires",
+                benefits_sub: "Pourquoi collaborer avec Amaru Resorts",
+                b1_t: "Referrals Protégés", b1_d: "Nous ne vous contournons jamais. Votre relation client est protégée.",
+                b2_t: "Commissions Attractives", b2_d: "50% à 70% de notre part de commission, confirmé par transaction.",
+                b3_t: "Accès Exclusif", b3_d: "Biens de luxe et projets neufs à Altea, Javea et Moraira.",
+                b4_t: "Exécution Premium", b4_d: "Visites vidéo, réponses ultra-rapides et présence en visioconférence.",
+                models_title: "Modèles de Collaboration",
+                m1_t: "Referral", m1_d: "Vous apportez le client, nous gérons tout de A à Z.",
+                m2_t: "Abonnement", m2_d: "Restez où vous êtes. Nous concluons l'affaire ensemble et partageons les gains.",
+                m3_t: "Achat de Service", m3_d: "Gardez 100% de la commission en achetant nos services professionnels.",
+                m_btn: "En savoir plus",
+                contact_title: "Devenir Partenaire",
+                label_fname: "Prénom", label_lname: "Nom",
+                label_company: "Société", label_country: "Pays", label_message: "À propos de votre agence",
+                btn_appointment: "Demander un RDV"
+            }
+            // ... Ajoutez NL et ES sur le même modèle si besoin
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(translations[lang][key]) el.innerHTML = translations[lang][key];
+            });
+            document.documentElement.lang = lang;
+        }
+
+        function zs_open_window(url, height, width) {
+            var leftPos = (screen.width - width) / 2;
+            var topPos = (screen.height - height) / 2;
+            window.open(url, 'zobookings', 'width=' + width + ',height=' + height + ',top=' + topPos + ',left=' + leftPos + ',scrollbars=yes,resizable=yes');
+        }
+    </script>
 </body>
 </html>
