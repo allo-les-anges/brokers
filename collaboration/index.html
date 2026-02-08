@@ -27,10 +27,10 @@
 
         /* Nav Glassmorphism au scroll */
         nav.scrolled {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            padding-top: 1rem; padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            padding-top: 0.75rem; padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         /* Fil conducteur visuel */
@@ -56,53 +56,61 @@
             animation: fadeInUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* Ajustement spécifique mobile pour éviter le chevauchement */
+        @media (max-width: 640px) {
+            nav { padding-left: 1rem; padding-right: 1rem; }
+            .nav-cta { padding-left: 1rem; padding-right: 1rem; letter-spacing: 0.15em; }
+        }
     </style>
 </head>
 <body class="text-gray-900">
 
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 px-6 md:px-12 py-8 text-white flex justify-between items-center font-light">
-    <a href="#" class="block transition-opacity hover:opacity-80">
-        <img src="https://res.cloudinary.com/drn6w4nab/image/upload/v1770539678/website-logo-footer_2x_1_iq0njc.png" 
-             alt="Amaru Resorts Logo" 
-             class="h-8 md:h-10 w-auto object-contain">
-    </a>
-
-    <div class="flex items-center space-x-6">
-        <select onchange="changeLanguage(this.value)" class="bg-transparent border border-white/20 text-[10px] uppercase tracking-[0.2em] px-3 py-1.5 focus:outline-none cursor-pointer hover:bg-white hover:text-black transition duration-500 rounded-none appearance-none text-center min-w-[50px]">
-            <option value="en" class="bg-black">EN</option>
-            <option value="fr" class="bg-black">FR</option>
-            <option value="nl" class="bg-black">NL</option>
-            <option value="es" class="bg-black">ES</option>
-        </select>
-        <a href="#contact" class="group relative overflow-hidden border border-white/40 px-8 py-2.5 text-[10px] uppercase tracking-[0.3em] transition-all duration-700 hover:border-white">
-            <span class="relative z-10" data-i18n="nav_contact">Become a Partner</span>
-            <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 px-4 md:px-12 py-5 md:py-8 text-white flex justify-between items-center font-light">
+        <a href="#" class="block transition-opacity hover:opacity-80 flex-shrink-0">
+            <img src="https://res.cloudinary.com/drn6w4nab/image/upload/v1770539678/website-logo-footer_2x_1_iq0njc.png" 
+                 alt="Amaru Resorts Logo" 
+                 class="h-7 md:h-10 w-auto object-contain">
         </a>
-    </div>
-</nav>
+
+        <div class="flex items-center space-x-3 md:space-x-6">
+            <select onchange="changeLanguage(this.value)" class="bg-transparent border border-white/20 text-[9px] md:text-[10px] uppercase tracking-[0.2em] px-2 py-1.5 focus:outline-none cursor-pointer hover:bg-white hover:text-black transition duration-500 rounded-none appearance-none text-center min-w-[45px]">
+                <option value="en" class="bg-black">EN</option>
+                <option value="fr" class="bg-black">FR</option>
+                <option value="nl" class="bg-black">NL</option>
+                <option value="es" class="bg-black">ES</option>
+            </select>
+            <a href="#contact" class="nav-cta group relative overflow-hidden border border-white/40 px-4 md:px-8 py-2 md:py-2.5 text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] transition-all duration-700 hover:border-white whitespace-nowrap">
+                <span class="relative z-10" data-i18n="nav_contact">Become a Partner</span>
+                <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+            </a>
+        </div>
+    </nav>
 
     <section class="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
         <div class="absolute inset-0 hero-bg z-0"></div>
-        <div class="relative z-10 max-w-5xl px-6 fade-in-up">
-            <span class="uppercase tracking-[0.6em] text-[10px] md:text-xs mb-8 block opacity-70" data-i18n="hero_sub">International Collaboration Program</span>
-            <h1 class="text-5xl md:text-[7rem] mb-8 font-extralight leading-none tracking-tight" data-i18n="hero_title">Costa Blanca <br>Real Estate.</h1>
-            <p class="text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed opacity-60 mb-10" data-i18n="hero_desc">
+        <div class="relative z-10 max-w-5xl px-6 pt-16 md:pt-0 fade-in-up">
+            <span class="uppercase tracking-[0.4em] md:tracking-[0.6em] text-[9px] md:text-xs mb-6 md:mb-8 block opacity-70" data-i18n="hero_sub">International Collaboration Program</span>
+            <h1 class="text-4xl md:text-[7rem] mb-6 md:mb-8 font-extralight leading-tight md:leading-none tracking-tight" data-i18n="hero_title">
+                Costa Blanca <br class="hidden md:block">Real Estate.
+            </h1>
+            <p class="text-base md:text-xl font-light max-w-2xl mx-auto leading-relaxed opacity-60 mb-10" data-i18n="hero_desc">
                 A high-touch partnership designed for elite international agents and their clients.
             </p>
             <div class="flex flex-col items-center opacity-40">
-                <div class="w-[1px] h-12 bg-white mb-4"></div>
-                <span class="text-[9px] uppercase tracking-[0.4em]">Trusted by international agents across Europe</span>
+                <div class="w-[1px] h-10 md:h-12 bg-white mb-4"></div>
+                <span class="text-[8px] md:text-[9px] uppercase tracking-[0.3em] md:tracking-[0.4em]">Trusted by international agents across Europe</span>
             </div>
         </div>
     </section>
 
-    <section class="py-32 px-8 max-w-6xl mx-auto relative">
+    <section class="py-24 md:py-32 px-8 max-w-6xl mx-auto relative">
         <div class="section-line text-black"></div>
-        <div class="text-center mb-24">
-            <h2 class="text-4xl md:text-5xl font-light mb-6" data-i18n="benefits_title">Partner Benefits</h2>
+        <div class="text-center mb-20 md:mb-24">
+            <h2 class="text-3xl md:text-5xl font-light mb-6" data-i18n="benefits_title">Partner Benefits</h2>
             <p class="text-gray-400 uppercase tracking-[0.4em] text-[10px]" data-i18n="benefits_sub">Why collaborate with Amaru Resorts</p>
         </div>
-        <div class="grid md:grid-cols-2 gap-x-20 gap-y-16">
+        <div class="grid md:grid-cols-2 gap-x-20 gap-y-12 md:gap-y-16">
             <div class="group">
                 <span class="text-xs font-serif italic text-gray-300 block mb-2 transition-colors group-hover:text-black">01 —</span>
                 <h3 class="text-2xl mb-4 italic" data-i18n="b1_t">Protected Referrals</h3>
@@ -126,17 +134,17 @@
         </div>
     </section>
 
-    <section class="py-32 bg-white px-8 border-y border-gray-100">
+    <section class="py-24 md:py-32 bg-white px-8 border-y border-gray-100">
         <div class="max-w-6xl mx-auto">
             <div class="section-line text-black"></div>
-            <div class="text-center mb-24">
-                <h2 class="text-4xl md:text-5xl font-light mb-6" data-i18n="models_title">Collaboration Models</h2>
+            <div class="text-center mb-20 md:mb-24">
+                <h2 class="text-3xl md:text-5xl font-light mb-6" data-i18n="models_title">Collaboration Models</h2>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="model-card group p-12 bg-[#FAF9F6] flex flex-col justify-between min-h-[480px]">
+            <div class="grid md:grid-cols-3 gap-8 md:gap-10">
+                <div class="model-card group p-8 md:p-12 bg-[#FAF9F6] flex flex-col justify-between min-h-[440px] md:min-h-[480px]">
                     <div>
-                        <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400 mb-10 block">Model 01</span>
+                        <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400 mb-8 md:mb-10 block">Model 01</span>
                         <h3 class="text-3xl mb-6 italic" data-i18n="m1_t">Referral</h3>
                         <div class="flex items-baseline gap-2 mb-8">
                             <span class="text-5xl font-extralight italic">25%</span>
@@ -150,9 +158,9 @@
                     </button>
                 </div>
 
-                <div class="model-card model-card-dark group p-12 bg-black text-white transform md:-translate-y-8 flex flex-col justify-between min-h-[480px]">
+                <div class="model-card model-card-dark group p-8 md:p-12 bg-black text-white transform md:-translate-y-8 flex flex-col justify-between min-h-[440px] md:min-h-[480px]">
                     <div>
-                        <span class="text-[10px] uppercase tracking-[0.4em] text-gray-500 mb-10 block">Model 02</span>
+                        <span class="text-[10px] uppercase tracking-[0.4em] text-gray-500 mb-8 md:mb-10 block">Model 02</span>
                         <h3 class="text-3xl mb-6 italic text-white" data-i18n="m2_t">Subscription</h3>
                         <div class="flex items-baseline gap-2 mb-8">
                             <span class="text-5xl font-extralight italic">45%</span>
@@ -166,9 +174,9 @@
                     </button>
                 </div>
 
-                <div class="model-card group p-12 bg-[#FAF9F6] flex flex-col justify-between min-h-[480px]">
+                <div class="model-card group p-8 md:p-12 bg-[#FAF9F6] flex flex-col justify-between min-h-[440px] md:min-h-[480px]">
                     <div>
-                        <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400 mb-10 block">Model 03</span>
+                        <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400 mb-8 md:mb-10 block">Model 03</span>
                         <h3 class="text-3xl mb-6 italic" data-i18n="m3_t">Service Buy</h3>
                         <div class="flex items-baseline gap-2 mb-8">
                             <span class="text-5xl font-extralight italic">100%</span>
@@ -185,18 +193,18 @@
         </div>
     </section>
 
-    <section id="contact" class="py-32 bg-[#111] text-white px-8">
+    <section id="contact" class="py-24 md:py-32 bg-[#111] text-white px-8">
         <div class="max-w-4xl mx-auto">
             <div class="section-line text-white"></div>
-            <div class="text-center mb-24">
-                <h2 class="text-4xl md:text-5xl mb-6 font-light" data-i18n="contact_title">Become a Partner</h2>
+            <div class="text-center mb-20 md:mb-24">
+                <h2 class="text-3xl md:text-5xl mb-6 font-light" data-i18n="contact_title">Become a Partner</h2>
                 <p class="text-gray-500 uppercase tracking-[0.4em] text-[10px]">Confidential Application</p>
             </div>
             
-            <form action="https://formspree.io/f/maqdwkea" method="POST" class="space-y-20">
+            <form action="https://formspree.io/f/maqdwkea" method="POST" class="space-y-16 md:space-y-20">
                 <div>
                     <span class="text-[9px] uppercase tracking-[0.4em] text-gray-600 mb-8 block">01 / Personal Identity</span>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10 md:gap-y-12">
                         <div class="flex flex-col">
                             <label class="text-[9px] uppercase tracking-[0.3em] text-gray-500 mb-3" data-i18n="label_fname">First Name</label>
                             <input type="text" name="first_name" required class="bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-white transition-colors duration-700 font-light">
@@ -210,7 +218,7 @@
 
                 <div>
                     <span class="text-[9px] uppercase tracking-[0.4em] text-gray-600 mb-8 block">02 / Professional Data</span>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10 md:gap-y-12">
                         <div class="flex flex-col">
                             <label class="text-[9px] uppercase tracking-[0.3em] text-gray-500 mb-3" data-i18n="label_company">Company</label>
                             <input type="text" name="company" required class="bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-white transition-colors duration-700 font-light">
@@ -224,8 +232,8 @@
 
                 <div>
                     <span class="text-[9px] uppercase tracking-[0.4em] text-gray-600 mb-8 block">03 / Communication</span>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 mb-12">
-                        <div class="flex flex-col md:col-span-1">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10 md:gap-y-12 mb-12">
+                        <div class="flex flex-col">
                             <label class="text-[9px] uppercase tracking-[0.3em] text-gray-500 mb-3">E-mail</label>
                             <input type="email" name="email" required class="bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-white transition-colors duration-700 font-light">
                         </div>
@@ -245,13 +253,13 @@
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10">
-                    <button type="submit" class="bg-white text-black h-20 uppercase text-[10px] tracking-[0.5em] font-bold hover:bg-gray-200 transition-all duration-700">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 pt-10">
+                    <button type="submit" class="bg-white text-black h-16 md:h-20 uppercase text-[10px] tracking-[0.4em] md:tracking-[0.5em] font-bold hover:bg-gray-200 transition-all duration-700">
                         SUBMIT APPLICATION
                     </button>
                     <button type="button" 
                             onclick="zs_open_window('https://amaruresorts.zohobookings.eu/portal-embed#/252944000000047054', '700', '750');" 
-                            class="border border-white/20 text-white h-20 uppercase text-[10px] tracking-[0.5em] font-bold hover:bg-white hover:text-black transition-all duration-700 flex items-center justify-center">
+                            class="border border-white/20 text-white h-16 md:h-20 uppercase text-[10px] tracking-[0.4em] md:tracking-[0.5em] font-bold hover:bg-white hover:text-black transition-all duration-700 flex items-center justify-center">
                         <span data-i18n="btn_appointment">Book a Meeting</span>
                     </button>
                 </div>
@@ -259,7 +267,7 @@
         </div>
     </section>
 
-    <footer class="py-20 text-center text-[10px] uppercase tracking-[0.4em] text-gray-600 bg-[#0c0c0c] border-t border-white/5">
+    <footer class="py-16 md:py-20 text-center text-[10px] uppercase tracking-[0.4em] text-gray-600 bg-[#0c0c0c] border-t border-white/5 px-4">
         &copy; 2026 Amaru Resorts | Altea &bull; Javea &bull; Moraira
     </footer>
 
@@ -317,7 +325,6 @@
                 label_company: "Société", label_country: "Pays", label_message: "À propos de votre agence",
                 btn_appointment: "Demander un RDV"
             }
-            // ... Ajoutez NL et ES sur le même modèle si besoin
         };
 
         function changeLanguage(lang) {
