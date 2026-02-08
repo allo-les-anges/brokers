@@ -61,21 +61,25 @@
 <body class="text-gray-900">
 
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 px-6 md:px-12 py-8 text-white flex justify-between items-center font-light">
-        <div class="text-xl md:text-2xl font-bold tracking-[0.3em] uppercase">Amaru Resorts</div>
-        <div class="flex items-center space-x-6">
-            <select onchange="changeLanguage(this.value)" class="bg-transparent border border-white/20 text-[10px] uppercase tracking-[0.2em] px-3 py-1.5 focus:outline-none cursor-pointer hover:bg-white hover:text-black transition duration-500 rounded-none appearance-none text-center min-w-[50px]">
-                <option value="en" class="bg-black">EN</option>
-                <option value="fr" class="bg-black">FR</option>
-                <option value="nl" class="bg-black">NL</option>
-                <option value="es" class="bg-black">ES</option>
-            </select>
-            <a href="#contact" class="group relative overflow-hidden border border-white/40 px-8 py-2.5 text-[10px] uppercase tracking-[0.3em] transition-all duration-700 hover:border-white">
-                <span class="relative z-10" data-i18n="nav_contact">Become a Partner</span>
-                <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                <style>.group:hover span { color: black; transition: color 0.5s; }</style>
-            </a>
-        </div>
-    </nav>
+    <a href="#" class="block transition-opacity hover:opacity-80">
+        <img src="https://res.cloudinary.com/drn6w4nab/image/upload/v1770539678/website-logo-footer_2x_1_iq0njc.png" 
+             alt="Amaru Resorts Logo" 
+             class="h-8 md:h-10 w-auto object-contain">
+    </a>
+
+    <div class="flex items-center space-x-6">
+        <select onchange="changeLanguage(this.value)" class="bg-transparent border border-white/20 text-[10px] uppercase tracking-[0.2em] px-3 py-1.5 focus:outline-none cursor-pointer hover:bg-white hover:text-black transition duration-500 rounded-none appearance-none text-center min-w-[50px]">
+            <option value="en" class="bg-black">EN</option>
+            <option value="fr" class="bg-black">FR</option>
+            <option value="nl" class="bg-black">NL</option>
+            <option value="es" class="bg-black">ES</option>
+        </select>
+        <a href="#contact" class="group relative overflow-hidden border border-white/40 px-8 py-2.5 text-[10px] uppercase tracking-[0.3em] transition-all duration-700 hover:border-white">
+            <span class="relative z-10" data-i18n="nav_contact">Become a Partner</span>
+            <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+        </a>
+    </div>
+</nav>
 
     <section class="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
         <div class="absolute inset-0 hero-bg z-0"></div>
