@@ -1,3 +1,8 @@
+Parfait, j'ai maintenant tous les éléments : les traductions professionnelles, la logique de répartition et les liens Zoho Bookings spécifiques pour chaque membre de l'équipe.
+
+Voici le **code complet et final** prêt à être utilisé. J'ai configuré la fonction `openPartnerBooking` pour qu'elle redirige automatiquement vers le bon expert selon la langue choisie par l'utilisateur.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,7 +153,7 @@
                         </div>
                         <p class="text-gray-500 font-light text-sm leading-relaxed mb-10" data-i18n="m1_d">You bring the client, we handle everything from A to Z.</p>
                     </div>
-                    <button onclick="zs_open_window('https://amaruresorts.zohobookings.eu/portal-embed#/252944000000047054', '700', '750');" class="text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-black/20 w-max pb-2 group-hover:border-black transition-all duration-700">
+                    <button onclick="openPartnerBooking()" class="text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-black/20 w-max pb-2 group-hover:border-black transition-all duration-700">
                         <span data-i18n="m_btn">Enquire Now</span>
                     </button>
                 </div>
@@ -163,7 +168,7 @@
                         </div>
                         <p class="text-gray-400 font-light text-sm leading-relaxed mb-10" data-i18n="m2_d">Stay where you are. We close the deal together and share the rewards.</p>
                     </div>
-                    <button onclick="zs_open_window('https://amaruresorts.zohobookings.eu/portal-embed#/252944000000047054', '700', '750');" class="text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-white/20 w-max pb-2 group-hover:border-white transition-all duration-700">
+                    <button onclick="openPartnerBooking()" class="text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-white/20 w-max pb-2 group-hover:border-white transition-all duration-700">
                         <span data-i18n="m_btn">Enquire Now</span>
                     </button>
                 </div>
@@ -178,7 +183,7 @@
                         </div>
                         <p class="text-gray-500 font-light text-sm leading-relaxed mb-10" data-i18n="m3_d">Keep 100% of the commission by purchasing our professional services.</p>
                     </div>
-                    <button onclick="zs_open_window('https://amaruresorts.zohobookings.eu/portal-embed#/252944000000047054', '700', '750');" class="text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-black/20 w-max pb-2 group-hover:border-black transition-all duration-700">
+                    <button onclick="openPartnerBooking()" class="text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-black/20 w-max pb-2 group-hover:border-black transition-all duration-700">
                         <span data-i18n="m_btn">Enquire Now</span>
                     </button>
                 </div>
@@ -250,7 +255,7 @@
                     <button type="submit" class="bg-white text-black h-16 md:h-20 uppercase text-[10px] tracking-[0.4em] md:tracking-[0.5em] font-bold hover:bg-gray-200 transition-all duration-700" data-i18n="btn_submit">
                         SUBMIT APPLICATION
                     </button>
-                    <button type="button" onclick="zs_open_window('https://amaruresorts.zohobookings.eu/portal-embed#/252944000000047054', '700', '750');" class="border border-white/20 text-white h-16 md:h-20 uppercase text-[10px] tracking-[0.4em] md:tracking-[0.5em] font-bold hover:bg-white hover:text-black transition-all duration-700 flex items-center justify-center">
+                    <button type="button" onclick="openPartnerBooking()" class="border border-white/20 text-white h-16 md:h-20 uppercase text-[10px] tracking-[0.4em] md:tracking-[0.5em] font-bold hover:bg-white hover:text-black transition-all duration-700 flex items-center justify-center">
                         <span data-i18n="btn_appointment">Book a Meeting</span>
                     </button>
                 </div>
@@ -263,12 +268,44 @@
     </footer>
 
     <script>
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) navbar.classList.add('scrolled');
-            else navbar.classList.remove('scrolled');
-        });
+        // --- CONFIGURATION ZOHO ---
+        const ZOHO_LINKS = {
+            abdou: 'https://amaruresorts.zohobookings.eu/#/252944000000047088',
+            gaetan: 'https://amaruresorts.zohobookings.eu/#/252944000000047080',
+            gillian: 'https://amaruresorts.zohobookings.eu/#/252944000000047014'
+        };
 
+        let currentLang = 'en';
+
+        // --- LOGIQUE DE RÉSERVATION ---
+        function openPartnerBooking() {
+            let url = "";
+
+            switch(currentLang) {
+                case 'fr':
+                    url = ZOHO_LINKS.gaetan; // Français -> Gaëtan
+                    break;
+                case 'ar':
+                    url = ZOHO_LINKS.abdou;  // Arabe -> Abdou
+                    break;
+                case 'nl':
+                case 'es':
+                    url = ZOHO_LINKS.gillian; // NL/ES -> Gillian
+                    break;
+                case 'en':
+                default:
+                    url = ZOHO_LINKS.gillian; // Anglais par défaut -> Gillian
+                    break;
+            }
+
+            const width = 700;
+            const height = 750;
+            const leftPos = (screen.width - width) / 2;
+            const topPos = (screen.height - height) / 2;
+            window.open(url, 'zobookings', 'width=' + width + ',height=' + height + ',top=' + topPos + ',left=' + leftPos + ',scrollbars=yes,resizable=yes');
+        }
+
+        // --- LOGIQUE DE TRADUCTION ---
         const translations = {
             en: {
                 nav_contact: "Become a Partner",
@@ -342,22 +379,24 @@
         };
 
         function changeLanguage(lang) {
+            currentLang = lang;
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if(translations[lang] && translations[lang][key]) {
                     el.innerHTML = translations[lang][key];
                 }
             });
-            // Gestion de l'orientation du texte (RTL pour l'arabe)
             document.body.dir = (lang === 'ar') ? 'rtl' : 'ltr';
             document.documentElement.lang = lang;
         }
 
-        function zs_open_window(url, height, width) {
-            var leftPos = (screen.width - width) / 2;
-            var topPos = (screen.height - height) / 2;
-            window.open(url, 'zobookings', 'width=' + width + ',height=' + height + ',top=' + topPos + ',left=' + leftPos + ',scrollbars=yes,resizable=yes');
-        }
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
     </script>
 </body>
 </html>
+
+```
