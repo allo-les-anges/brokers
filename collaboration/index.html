@@ -6,6 +6,7 @@
     <title>Amaru Resorts | Exclusive Partner Program</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/css/intlTelInput.css">
     <script id="zs-rich-snippet-script" src="https://bookings.zoho.eu/js/book-appointment.js"></script>
     
     <style>
@@ -54,6 +55,13 @@
         [dir="rtl"] .border-l { border-left: 0; border-right: 1px solid #f3f4f6; padding-left: 0; padding-right: 1.5rem; }
         [dir="rtl"] .tracking-widest, [dir="rtl"] .tracking-tight, [dir="rtl"] .tracking-\[0\.4em\], [dir="rtl"] .tracking-\[0\.6em\] { letter-spacing: 0; }
         
+        /* Custom Intl-Tel-Input Styling for Dark Theme */
+        .iti { width: 100%; }
+        .iti__country-list { background-color: #111; border: 1px solid rgba(255,255,255,0.1); color: white; }
+        .iti__country:hover { background-color: #222; }
+        .iti__selected-country { background-color: transparent !important; }
+        .iti__arrow { border-top-color: rgba(255,255,255,0.4) !important; }
+
         @media (max-width: 640px) {
             nav { padding-left: 1rem; padding-right: 1rem; }
         }
@@ -232,12 +240,7 @@
                         </div>
                         <div class="flex flex-col">
                             <label class="text-[9px] uppercase tracking-[0.3em] text-gray-500 mb-3" data-i18n="label_tel">Telephone</label>
-                            <div class="flex gap-4">
-                                <select name="country_code" class="bg-transparent border-b border-white/10 py-4 text-white focus:outline-none w-20 text-xs font-light">
-                                    <option value="+34">ES +34</option><option value="+33">FR +33</option><option value="+32">BE +32</option><option value="+31">NL +31</option><option value="+44">GB +44</option><option value="+1">US +1</option>
-                                </select>
-                                <input type="tel" name="phone" required class="flex-1 bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-white transition-colors duration-700 font-light">
-                            </div>
+                            <input id="phone" type="tel" name="phone_full" required class="bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-white transition-colors duration-700 font-light">
                         </div>
                     </div>
                     <div class="flex flex-col">
@@ -262,6 +265,7 @@
         &copy; 2026 Amaru Resorts | Altea &bull; Javea &bull; Moraira
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/intlTelInput.min.js"></script>
     <script>
         // --- CONFIGURATION ZOHO ---
         const ZOHO_LINKS = {
@@ -271,6 +275,21 @@
         };
 
         let currentLang = 'en';
+
+        // --- PHONE INPUT INITIALIZATION ---
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            initialCountry: "auto",
+            geoIpLookup: callback => {
+                fetch("https://ipapi.co/json")
+                    .then(res => res.json())
+                    .then(data => callback(data.country_code))
+                    .catch(() => callback("es"));
+            },
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/utils.js",
+            preferredCountries: ["es", "fr", "be", "nl", "gb", "us"],
+            separateDialCode: true
+        });
 
         // --- LOGIQUE DE RÉSERVATION ---
         function openPartnerBooking() {
@@ -387,7 +406,7 @@
                 m3_t: "Compra de Servicios", m3_d: "Mantenga el 100% de la comisión contratando nuestros servicios profesionales.",
                 m_btn: "Solicitar Información", m_share: "Participación",
                 contact_title: "Hazte Socio", contact_sub: "Solicitud Confidencial",
-                f_sec1: "01 / Identidad Personal", f_sec2: "02 / Datos Profesionales", f_sec3: "03 / Comunicación",
+                f_sec1: "01 / Identidad Personal", f_sec2: "02 / Datos Professionale", f_sec3: "03 / Comunicación",
                 label_fname: "Nombre", label_lname: "Apellido",
                 label_company: "Empresa", label_country: "País", label_tel: "Teléfono", label_message: "Sobre su organización",
                 btn_submit: "ENVIAR SOLICITUD", btn_appointment: "Reservar Cita"
