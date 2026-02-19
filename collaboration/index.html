@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amaru Resorts | Exclusive Partner Program</title>
+    
+    <meta name="description" content="Exclusive Partner Program for Costa Blanca Real Estate. High-touch partnership for elite international agents.">
+    <meta property="og:title" content="Amaru Resorts | Partner Program">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/css/intlTelInput.css">
@@ -51,16 +56,14 @@
         }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-        /* RTL Support pour l'Arabe */
+        /* RTL Support & Fixes */
         [dir="rtl"] .border-l { border-left: 0; border-right: 1px solid #f3f4f6; padding-left: 0; padding-right: 1.5rem; }
         [dir="rtl"] .tracking-widest, [dir="rtl"] .tracking-tight, [dir="rtl"] .tracking-\[0\.4em\], [dir="rtl"] .tracking-\[0\.6em\] { letter-spacing: 0; }
         
-        /* Custom Intl-Tel-Input Styling for Dark Theme */
+        /* Custom Intl-Tel-Input Styling */
         .iti { width: 100%; }
         .iti__country-list { background-color: #111; border: 1px solid rgba(255,255,255,0.1); color: white; }
         .iti__country:hover { background-color: #222; }
-        .iti__selected-country { background-color: transparent !important; }
-        .iti__arrow { border-top-color: rgba(255,255,255,0.4) !important; }
 
         @media (max-width: 640px) {
             nav { padding-left: 1rem; padding-right: 1rem; }
@@ -77,9 +80,10 @@
         </a>
 
         <div class="flex items-center space-x-3 md:space-x-6">
-            <select onchange="changeLanguage(this.value)" class="bg-transparent border border-white/20 text-[9px] md:text-[10px] uppercase tracking-[0.2em] px-2 py-1.5 focus:outline-none cursor-pointer hover:bg-white hover:text-black transition duration-500 rounded-none appearance-none text-center min-w-[45px]">
+            <select onchange="changeLanguage(this.value)" aria-label="Select Language" class="bg-transparent border border-white/20 text-[9px] md:text-[10px] uppercase tracking-[0.2em] px-2 py-1.5 focus:outline-none cursor-pointer hover:bg-white hover:text-black transition duration-500 rounded-none appearance-none text-center min-w-[45px]">
                 <option value="en" class="bg-black">EN</option>
                 <option value="fr" class="bg-black">FR</option>
+                <option value="pl" class="bg-black">PL</option>
                 <option value="ar" class="bg-black">AR</option>
                 <option value="nl" class="bg-black">NL</option>
                 <option value="es" class="bg-black">ES</option>
@@ -98,7 +102,7 @@
             <h1 class="text-4xl md:text-[7rem] mb-6 md:mb-8 font-extralight leading-tight md:leading-none tracking-tight" data-i18n="hero_title">
                 Costa Blanca <br class="hidden md:block">Real Estate.
             </h1>
-            <p class="text-base md:text-xl font-light max-w-2xl mx-auto leading-relaxed opacity-60 mb-10" data-i18n="hero_desc">
+            <p class="text-base md:text-xl font-light max-w-2xl mx-auto leading-relaxed opacity-80 mb-10" data-i18n="hero_desc">
                 A high-touch partnership designed for elite international agents and their clients.
             </p>
             <div class="flex flex-col items-center opacity-40">
@@ -123,7 +127,7 @@
             <div class="group">
                 <span class="text-xs font-serif italic text-gray-300 block mb-2 transition-colors group-hover:text-black">02 —</span>
                 <h3 class="text-2xl mb-4 italic" data-i18n="b2_t">Generous Commissions</h3>
-                <p class="text-gray-500 font-light text-sm leading-relaxed border-l border-gray-100 pl-6 transition-colors group-hover:border-black" data-i18n="b2_d">Receive 50% to 70% of our commission side, confirmed per deal.</p>
+                <p class="text-gray-500 font-light text-sm leading-relaxed border-l border-gray-100 pl-6 transition-colors group-hover:border-black" data-i18n="b2_d">Receive 25% to 100% of our commission side, confirmed per deal.</p>
             </div>
             <div class="group">
                 <span class="text-xs font-serif italic text-gray-300 block mb-2 transition-colors group-hover:text-black">03 —</span>
@@ -202,7 +206,9 @@
                 <p class="text-gray-500 uppercase tracking-[0.4em] text-[10px]" data-i18n="contact_sub">Confidential Application</p>
             </div>
             
-            <form action="https://formspree.io/f/maqdwkea" method="POST" class="space-y-16 md:space-y-20">
+            <form action="https://formspree.io/f/maqdwkea" method="POST" id="partnerForm" class="space-y-16 md:space-y-20">
+                <input type="hidden" name="full_phone_number" id="full_phone">
+
                 <div>
                     <span class="text-[9px] uppercase tracking-[0.4em] text-gray-600 mb-8 block" data-i18n="f_sec1">01 / Personal Identity</span>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10 md:gap-y-12">
@@ -240,7 +246,7 @@
                         </div>
                         <div class="flex flex-col">
                             <label class="text-[9px] uppercase tracking-[0.3em] text-gray-500 mb-3" data-i18n="label_tel">Telephone</label>
-                            <input id="phone" type="tel" name="phone_full" required class="bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-white transition-colors duration-700 font-light">
+                            <input id="phone" type="tel" required class="bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-white transition-colors duration-700 font-light">
                         </div>
                     </div>
                     <div class="flex flex-col">
@@ -267,7 +273,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/intlTelInput.min.js"></script>
     <script>
-        // --- CONFIGURATION ZOHO ---
         const ZOHO_LINKS = {
             abdou: 'https://amaruresorts.zohobookings.eu/#/252944000000047088',
             gaetan: 'https://amaruresorts.zohobookings.eu/#/252944000000047080',
@@ -276,7 +281,7 @@
 
         let currentLang = 'en';
 
-        // --- PHONE INPUT INITIALIZATION ---
+        // --- PHONE INPUT ---
         const phoneInputField = document.querySelector("#phone");
         const phoneInput = window.intlTelInput(phoneInputField, {
             initialCountry: "auto",
@@ -287,37 +292,28 @@
                     .catch(() => callback("es"));
             },
             utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/utils.js",
-            preferredCountries: ["es", "fr", "be", "nl", "gb", "us"],
+            preferredCountries: ["es", "pl", "fr", "be", "nl", "gb"],
             separateDialCode: true
         });
 
-        // --- LOGIQUE DE RÉSERVATION ---
+        // Form submission helper
+        document.getElementById('partnerForm').onsubmit = function() {
+            document.getElementById('full_phone').value = phoneInput.getNumber();
+        };
+
         function openPartnerBooking() {
             let url = "";
-
             switch(currentLang) {
-                case 'fr':
-                    url = ZOHO_LINKS.gaetan; 
-                    break;
-                case 'ar':
-                    url = ZOHO_LINKS.abdou;  
-                    break;
-                case 'nl':
-                case 'es':
-                case 'en':
-                default:
-                    url = ZOHO_LINKS.gillian; 
-                    break;
+                case 'fr': url = ZOHO_LINKS.gaetan; break;
+                case 'ar': url = ZOHO_LINKS.abdou; break;
+                default: url = ZOHO_LINKS.gillian; break;
             }
-
-            const width = 700;
-            const height = 750;
+            const width = 700; const height = 750;
             const leftPos = (screen.width - width) / 2;
             const topPos = (screen.height - height) / 2;
-            window.open(url, 'zobookings', 'width=' + width + ',height=' + height + ',top=' + topPos + ',left=' + leftPos + ',scrollbars=yes,resizable=yes');
+            window.open(url, 'zobookings', `width=${width},height=${height},top=${topPos},left=${leftPos},scrollbars=yes,resizable=yes`);
         }
 
-        // --- LOGIQUE DE TRADUCTION ---
         const translations = {
             en: {
                 nav_contact: "Become a Partner",
@@ -328,7 +324,7 @@
                 benefits_title: "Partner Benefits",
                 benefits_sub: "Why collaborate with Amaru Resorts",
                 b1_t: "Protected Referrals", b1_d: "We never bypass you. Your client relationship is contractually protected.",
-                b2_t: "Generous Commissions", b2_d: "Receive 50% to 70% of our commission side, confirmed per deal.",
+                b2_t: "Generous Commissions", b2_d: "Receive 25% to 100% of our commission side, confirmed per deal.",
                 b3_t: "Exclusive Access", b3_d: "Upscale and off-plan opportunities in Costa Blanca, Costa Calida, and Costa del Sol.",
                 b4_t: "High-Touch Execution", b4_d: "Video tours, same-day replies, and support in your client meetings.",
                 models_title: "Collaboration Models",
@@ -342,74 +338,97 @@
                 label_company: "Company", label_country: "Country", label_tel: "Telephone", label_message: "About your organization",
                 btn_submit: "SUBMIT APPLICATION", btn_appointment: "Book a Meeting"
             },
-            nl: {
-                nav_contact: "Partner Worden",
-                hero_sub: "Internationaal Samenwerkingsprogramma",
-                hero_title: "Costa Blanca <br>Vastgoed.",
-                hero_desc: "Een hoogwaardig partnerschap ontworpen voor de beste internationale makelaars en hun cliënten.",
-                hero_trust: "Vertrouwd door internationale makelaars in heel Europa",
-                benefits_title: "Voordelen voor Partners",
-                benefits_sub: "Waarom samenwerken met Amaru Resorts",
-                b1_t: "Beschermde Referrals", b1_d: "Wij passeren u nooit. Uw klantrelatie is contractueel beschermd.",
-                b2_t: "Royale Commissies", b2_d: "Ontvang 50% tot 70% van ons commissie-aandeel, bevestigd per transactie.",
-                b3_t: "Exclusieve Toegang", b3_d: "Luxe woningen en off-plan projecten in Costa Blanca, Costa Calida en Costa del Sol.",
-                b4_t: "Hoogwaardige Uitvoering", b4_d: "Videotours, antwoord op dezelfde dag en ondersteuning bij uw klantgesprekken.",
-                models_title: "Samenwerkingsmodellen",
-                m1_t: "Referral", m1_d: "U brengt de klant aan, wij regelen alles van A tot Z.",
-                m2_t: "Subscription", m2_d: "Blijf waar u bent. We sluiten de deal samen en delen de opbrengst.",
-                m3_t: "Service Buy", m3_d: "Behoud 100% van de commissie door onze professionele diensten in te kopen.",
-                m_btn: "Nu Aanvragen", m_share: "Aandeel",
-                contact_title: "Partner Worden", contact_sub: "Vertrouwelijke Aanvraag",
-                f_sec1: "01 / Persoonlijke Identiteit", f_sec2: "02 / Zakelijke Gegevens", f_sec3: "03 / Communicatie",
-                label_fname: "Voornaam", label_lname: "Achternaam",
-                label_company: "Bedrijf", label_country: "Land", label_tel: "Telefoonnummer", label_message: "Over uw organisatie",
-                btn_submit: "AANVRAAG INDIENEN", btn_appointment: "Afspraak Inplannen"
+            pl: {
+                nav_contact: "Zostań Partnerem",
+                hero_sub: "Międzynarodowy Program Współpracy",
+                hero_title: "Nieruchomości <br>Costa Blanca.",
+                hero_desc: "Ekskluzywne partnerstwo stworzone dla elitarnych agentów międzynarodowych i ich klientów.",
+                hero_trust: "Zaufali nam agenci z całej Europy",
+                benefits_title: "Korzyści dla Partnerów",
+                benefits_sub: "Dlaczego warto współpracować z Amaru Resorts",
+                b1_t: "Ochrona Klienta", b1_d: "Nigdy Cię nie pomijamy. Twoja relacja z klientem jest chroniona umową.",
+                b2_t: "Wysokie Prowizje", b2_d: "Otrzymuj od 25% do 100% naszej części prowizji, potwierdzonej przy każdej transakcji.",
+                b3_t: "Ekskluzywny Dostęp", b3_d: "Prestiżowe nieruchomości i projekty deweloperskie w Costa Blanca, Costa Calida i Costa del Sol.",
+                b4_t: "Wsparcie Premium", b4_d: "Wideoprezentacje, odpowiedzi tego samego dnia i wsparcie podczas spotkań z klientami.",
+                models_title: "Modele Współpracy",
+                m1_t: "Polecenie", m1_d: "Ty dostarczasz klienta, my zajmujemy się resztą od A do Z.",
+                m2_t: "Subskrypcja", m2_d: "Zostań u siebie. Razem zamykamy transakcję i dzielimy się zyskiem.",
+                m3_t: "Zakup Usług", m3_d: "Zatrzymaj 100% prowizji, wykupując nasze profesjonalne usługi wsparcia lokalnego.",
+                m_btn: "Zapytaj o szczegóły", m_share: "Udział",
+                contact_title: "Zostań Partnerem", contact_sub: "Poufna Aplikacja",
+                f_sec1: "01 / Dane Osobowe", f_sec2: "02 / Dane Zawodowe", f_sec3: "03 / Kontakt",
+                label_fname: "Imię", label_lname: "Nazwisko",
+                label_company: "Firma", label_country: "Kraj", label_tel: "Telefon", label_message: "O Twojej organizacji",
+                btn_submit: "WYŚLIJ ZGŁOSZENIE", btn_appointment: "Umów Spotkanie"
             },
             fr: {
                 nav_contact: "Devenir Partenaire",
                 hero_sub: "Programme de Collaboration International",
                 hero_title: "Immobilier <br>Costa Blanca.",
-                hero_desc: "Un partenariat d'excellence conçu pour les agents internationaux et leurs clients les plus exigeants.",
+                hero_desc: "Un partenariat d'excellence conçu pour les agents internationaux et leurs clients.",
                 hero_trust: "Approuvé par des agents internationaux dans toute l'Europe",
                 benefits_title: "Vos Avantages",
                 benefits_sub: "Pourquoi collaborer avec Amaru Resorts",
                 b1_t: "Apports Protégés", b1_d: "Nous ne contournons jamais nos partenaires. Votre relation client est protégée contractuellement.",
-                b2_t: "Commissions Honoraires", b2_d: "Percevez 50% à 70% de notre part de commission, établie en toute transparence pour chaque mandat.",
-                b3_t: "Accès Privilégié", b3_d: "Découvrez une sélection exclusive de propriétés et projets neufs à Costa Blanca, Costa Calida et Costa del Sol.",
-                b4_t: "Accompagnement Sur-Mesure", b4_d: "Visites virtuelles, réactivité immédiate et assistance lors de vos rendez-vous clients.",
-                models_title: "Nos Modèles de Collaboration",
-                m1_t: "Apport d'Affaires", m1_d: "Vous nous présentez le client, nous orchestrons l'intégralité de la transaction pour vous.",
+                b2_t: "Commissions Honoraires", b2_d: "Percevez 25% à 100% de notre part de commission, établie par mandat.",
+                b3_t: "Accès Privilégié", b3_d: "Propriétés exclusives et projets neufs à Costa Blanca, Costa Calida et Costa del Sol.",
+                b4_t: "Accompagnement Sur-Mesure", b4_d: "Visites virtuelles, réactivité immédiate et assistance lors de vos rendez-vous.",
+                models_title: "Modèles de Collaboration",
+                m1_t: "Apport d'Affaires", m1_d: "Vous nous présentez le client, nous orchestrons la transaction.",
                 m2_t: "Co-Branding", m2_d: "Unissons nos forces. Nous finalisons la vente ensemble et partageons les honoraires.",
-                m3_t: "Service à la Carte", m3_d: "Conservez 100% de votre commission en souscrivant simplement à nos services d'accompagnement locaux.",
+                m3_t: "Service à la Carte", m3_d: "Conservez 100% de votre commission en souscrivant à nos services.",
                 m_btn: "En savoir plus", m_share: "Part",
                 contact_title: "Demande de Partenariat", contact_sub: "Candidature Confidentielle",
                 f_sec1: "01 / Identité Personnelle", f_sec2: "02 / Données Professionnelles", f_sec3: "03 / Communication",
                 label_fname: "Prénom", label_lname: "Nom",
-                label_company: "Agence / Société", label_country: "Pays", label_tel: "Téléphone", label_message: "Parlez-nous de votre activité",
+                label_company: "Société", label_country: "Pays", label_tel: "Téléphone", label_message: "À propos de votre activité",
                 btn_submit: "ENVOYER LA DEMANDE", btn_appointment: "Prendre Rendez-vous"
             },
             es: {
                 nav_contact: "Hazte Socio",
                 hero_sub: "Programa de Colaboración Internacional",
                 hero_title: "Inmobiliaria <br>Costa Blanca.",
-                hero_desc: "Una alianza de alto nivel diseñada para agentes internacionales de élite y sus clientes.",
+                hero_desc: "Una alianza de alto nivel diseñada para agentes internacionales de élite.",
                 hero_trust: "Avalado por agentes internacionales en toda Europa",
                 benefits_title: "Beneficios para Socios",
                 benefits_sub: "Por qué colaborar con Amaru Resorts",
                 b1_t: "Referidos Protegidos", b1_d: "Nunca le puenteamos. Su relación con el cliente está protegida por contrato.",
-                b2_t: "Comisiones Generosas", b2_d: "Reciba del 50% al 70% de nuestra parte de comisión, confirmada por operación.",
-                b3_t: "Acceso Exclusivo", b3_d: "Propiedades de lujo y proyectos sobre plano en Costa Blanca, Costa Calida y Costa del Sol.",
-                b4_t: "Ejecución Impecable", b4_d: "Tours en vídeo, respuestas el mismo día y apoyo en sus reuniones con clientes.",
+                b2_t: "Comisiones Generosas", b2_d: "Reciba del 25% al 100% de nuestra comisión, confirmada por operación.",
+                b3_t: "Acceso Exclusivo", b3_d: "Propiedades de lujo y proyectos sobre plano en Costa Blanca y Costa del Sol.",
+                b4_t: "Ejecución Impecable", b4_d: "Tours en vídeo, respuestas rápidas y apoyo en reuniones.",
                 models_title: "Modelos de Colaboración",
-                m1_t: "Referido", m1_d: "Usted trae al cliente, nosotros nos encargamos de todo de la A a la Z.",
-                m2_t: "Suscripción", m2_d: "Trabaje desde donde esté. Cerramos el trato juntos y compartimos los beneficios.",
-                m3_t: "Compra de Servicios", m3_d: "Mantenga el 100% de la comisión contratando nuestros servicios profesionales.",
+                m1_t: "Referido", m1_d: "Usted trae al cliente, nosotros nos encargamos de todo.",
+                m2_t: "Suscripción", m2_d: "Trabaje desde donde esté. Cerramos el trato juntos.",
+                m3_t: "Compra de Servicios", m3_d: "Mantenga el 100% de la comisión contratando nuestros servicios.",
                 m_btn: "Solicitar Información", m_share: "Participación",
                 contact_title: "Hazte Socio", contact_sub: "Solicitud Confidencial",
-                f_sec1: "01 / Identidad Personal", f_sec2: "02 / Datos Professionale", f_sec3: "03 / Comunicación",
+                f_sec1: "01 / Identidad Personal", f_sec2: "02 / Datos Profesionales", f_sec3: "03 / Comunicación",
                 label_fname: "Nombre", label_lname: "Apellido",
                 label_company: "Empresa", label_country: "País", label_tel: "Teléfono", label_message: "Sobre su organización",
                 btn_submit: "ENVIAR SOLICITUD", btn_appointment: "Reservar Cita"
+            },
+            nl: {
+                nav_contact: "Partner Worden",
+                hero_sub: "Internationaal Samenwerkingsprogramma",
+                hero_title: "Costa Blanca <br>Vastgoed.",
+                hero_desc: "Een hoogwaardig partnerschap voor de beste internationale makelaars.",
+                hero_trust: "Vertrouwd door makelaars in heel Europa",
+                benefits_title: "Voordelen voor Partners",
+                benefits_sub: "Waarom samenwerken met Amaru Resorts",
+                b1_t: "Beschermde Referrals", b1_d: "Wij passeren u nooit. Uw klantrelatie is contractueel beschermd.",
+                b2_t: "Royale Commissies", b2_d: "Ontvang 25% tot 100% van onze commissie, bevestigd per deal.",
+                b3_t: "Exclusieve Toegang", b3_d: "Luxe woningen en off-plan projecten in de Costa Blanca.",
+                b4_t: "Hoogwaardige Uitvoering", b4_d: "Videotours, snelle antwoorden en ondersteuning bij gesprekken.",
+                models_title: "Samenwerkingsmodellen",
+                m1_t: "Referral", m1_d: "U brengt de klant aan, wij regelen alles.",
+                m2_t: "Subscription", m2_d: "Blijf waar u bent. We sluiten de deal samen.",
+                m3_t: "Service Buy", m3_d: "Behoud 100% van de commissie door onze diensten in te kopen.",
+                m_btn: "Nu Aanvragen", m_share: "Aandeel",
+                contact_title: "Partner Worden", contact_sub: "Vertrouwelijke Aanvraag",
+                f_sec1: "01 / Persoonlijke Identiteit", f_sec2: "02 / Zakelijke Gegevens", f_sec3: "03 / Communicatie",
+                label_fname: "Voornaam", label_lname: "Achternaam",
+                label_company: "Bedrijf", label_country: "Land", label_tel: "Telefoonnummer", label_message: "Over uw organisatie",
+                btn_submit: "AANVRAAG INDIENEN", btn_appointment: "Afspraak Inplannen"
             },
             ar: {
                 nav_contact: "انضم كشريك معتمد",
@@ -420,19 +439,19 @@
                 benefits_title: "مزايا الشراكة",
                 benefits_sub: "لماذا تختار التعاون مع Amaru Resorts",
                 b1_t: "حماية كاملة للإحالات", b1_d: "نلتزم بعدم تجاوزك مطلقا، حيث تبقى علاقتك بالعميل محمية بعقود رسمية.",
-                b2_t: "عمولات تنافسية ومجزية", b2_d: "تحصل على نسبة تتراوح بين 50 و 70% من حصتنا من العمولة ويتم تحديدها بوضوح لكل صفقة.",
-                b3_t: "وصول حصري لفرص مميزة", b3_d: "فرص عقارية راقية ومشاريع قيد التطوير في التيا وخافيا وموريرا.",
-                b4_t: "تنفيذ احترافي بمعايير عالية", b4_d: "جولات افتراضية بالفيديو، استجابة سريعة في نفس اليوم، ودعم مباشر خلال اجتماعاتك مع العملاء.",
+                b2_t: "عمولات تنافسية ومجزية", b2_d: "تحصل على نسبة تتراوح بين 25 و 100% من حصتنا من العمولة.",
+                b3_t: "وصول حصري لفرص مميزة", b3_d: "فرص عقارية راقية ومشاريع قيد التطوير في كوستا بلانكا وكوستا ديل سول.",
+                b4_t: "تنفيذ احترافي بمعايير عالية", b4_d: "جولات افتراضية بالفيديو، استجابة سريعة، ودعم مباشر خلال اجتماعاتك.",
                 models_title: "نماذج الشراكة",
-                m1_t: "نظام الإحالة", m1_d: "أنت تقوم بتقديم العميل، ونحن نتولى إدارة الصفقة بالكامل حتى الإغلاق.",
+                m1_t: "نظام الإحالة", m1_d: "أنت تقوم بتقديم العميل، ونحن نتولى إدارة الصفقة بالكامل.",
                 m2_t: "نظام الاشتراك", m2_d: "اعمل من موقعك الحالي، ننجز الصفقة معا ونتقاسم العوائد.",
-                m3_t: "شراء الخدمات المهنية", m3_d: "احتفظ بكامل العمولة مقابل الاستفادة من خدماتنا المهنية المتخصصة.",
+                m3_t: "شراء الخدمات المهنية", m3_d: "احتفظ بكامل العمولة مقابل الاستفادة من خدماتنا المهنية.",
                 m_btn: "تواصل معنا الآن", m_share: "نسبة الشريك",
                 contact_title: "طلب شراكة سري", contact_sub: "طلب سري للغاية",
                 f_sec1: "01 / البيانات الشخصية", f_sec2: "02 / المعلومات المهنية", f_sec3: "03 / معلومات التواصل",
                 label_fname: "الاسم الأول", label_lname: "اسم العائلة",
-                label_company: "الشركة", label_country: "البلد", label_tel: "الهاتف", label_message: "نبذة عن شركتك ونشاطها",
-                btn_submit: "إرسال الطلب", btn_appointment: "حجز اجتماع استشاري"
+                label_company: "الشركة", label_country: "البلد", label_tel: "الهاتف", label_message: "نبذة عن شركتك",
+                btn_submit: "إرسال الطلب", btn_appointment: "حجز اجتماع"
             }
         };
 
